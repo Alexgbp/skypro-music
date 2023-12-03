@@ -134,7 +134,7 @@ const Link = styled.a`
       <div onClick={toggleMenuAuthor} className={`${"filter__button"} ${menuAuthor ? `${"btn-text-active"}` : `${"_btn-text"}`} `}>исполнителю</div>
       <CountBlock $visible={menuAuthor}>{filterForAuthor.length}</CountBlock>
       <Menu $visible={menuAuthor}>
-          <List>{filterForAuthor.map((element) => <ListElement key={element}><Link href="#">{element}</Link></ListElement>)}</List>
+          <List>{filterForAuthor.map((element) => <ListElement key={element.id}><Link href="#">{element}</Link></ListElement>)}</List>
         </Menu>
       </MenuBlock>
 
@@ -142,7 +142,7 @@ const Link = styled.a`
     <div onClick={toggleMenuYear} className={`${"filter__button"} ${menuYear ? `${"btn-text-active"}` : `${"_btn-text"}`}`}>году выпуска</div>
     <CountBlock $visible={menuYear}>{filterForYear.length}</CountBlock>
     <Menu $visible={menuYear}>
-    <List>{filterForYear.map((element) => <ListElement key={element}><Link href="#">{element}</Link></ListElement>)}</List>
+    <List>{filterForYear.map((element) => <ListElement key={element.id}><Link href="#">{element}</Link></ListElement>)}</List>
     </Menu>
     </MenuBlock>
       
@@ -151,7 +151,7 @@ const Link = styled.a`
       <div onClick={toggleMenuGenre} className={`${"filter__button"} ${menuGenre ? `${"btn-text-active"}` : `${"_btn-text"}`}`}>жанру</div>
       <CountBlock $visible={menuGenre}>{filterForGenre.length}</CountBlock>
       <Menu $visible={menuGenre}>
-        <List>{filterForGenre.map((element) => <ListElement key={element}><Link href="#">{element}</Link></ListElement>)}</List>
+        <List>{filterForGenre.map((element) => <ListElement key={element.id}><Link href="#">{element}</Link></ListElement>)}</List>
       </Menu>
       </MenuBlock>
     </CenterBlockFilter>
