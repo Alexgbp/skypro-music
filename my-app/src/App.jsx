@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import NavMenu from './components/navMenu';
 import SearchBlock from './components/searchBlock';
 import SideBar from './components/sideBar';
-import AudioPlayer from './components/audioPlayer';
+import AudioPlayer from './components/AudioPlayer';
 import Filter from './components/filter';
 import TrackList from './components/trackList';
 

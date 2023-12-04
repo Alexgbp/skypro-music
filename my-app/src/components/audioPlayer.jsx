@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './css/audioPlayer';
+import * as S from './css/AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import PropTypes from 'prop-types';
 
@@ -99,4 +99,5 @@ function AudioPlayer({loader}) {
     </S.Bar>
   );
 }
+
 export default AudioPlayer;
