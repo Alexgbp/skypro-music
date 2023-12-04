@@ -1,42 +1,177 @@
 import React from 'react';
 import './css/signUp.css';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+`
+const SignUpContainer = styled.div`
+max-width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.85);
+`
+const ModalBlock = styled.div`
+position: absolute;
+z-index: 2;
+left: calc(50% - (366px/2));
+top: calc(50% - (439px/2));
+opacity: 1;
+`
+const ModalFormLogin = styled.form`
+width: 366px;
+height: 439px;
+background-color: #FFFFFF;
+border-radius: 12px;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+    -ms-flex-direction: column;
+        flex-direction: column;
+-webkit-box-align: center;
+    -ms-flex-align: center;
+        align-items: center;
+padding: 43px 44px 47px 40px;
+`
+const ModalLogo = styled.div`
+width: 140px;
+height: 21px;
+margin-bottom: 34px;
+background-color: transparent;
+`
+const ModalLogoImg = styled.img`
+width: 140px;
+    height: auto;
+`
+const ModalInput = styled.input`
+width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #D0CECE;
+    padding: 8px 1px;
+    margin-right: 3px;
+    margin-bottom: 30px;
+
+    &::-webkit-input-placeholder {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.05px;
+      color: #D0CECE;
+    }
+    &:-ms-input-placeholder {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.05px;
+      color: #D0CECE;
+    }
+    &::-ms-input-placeholder {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.05px;
+      color: #D0CECE;
+    }
+    &::placeholder {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.05px;
+      color: #D0CECE;
+    }
+    &:first-child {
+      margin-bottom: 30px;
+    }
+`
+const BtnEnter = styled.button`
+width: 278px;
+    height: 62px;
+    background-color: #580EA2;
+    border-radius: 6px;
+    margin-left: 4px;
+    border: none;
+    margin-top: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
+            &:hover {
+              background-color: #3F007D;
+            }
+            &:active {
+              background-color: #271A58;
+            }
+`
+const Link = styled.a`
+width: 100%;
+    height: 100%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.05px;
+    color: #FFFFFF;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+`
 
 function SignUpOfApp() {
   return (
-    <div className="wrapper">
-      <div className="container-signup">
-        <div className="modal__block">
-          <form className="modal__form-login">
-            <a href="../">
-              <div className="modal__logo">
-                <img src="../img/logo_modal.png" alt="logo" />
-              </div>
-            </a>
-            <input
-              className="modal__input login"
+    <Wrapper>
+      <SignUpContainer>
+        <ModalBlock>
+          <ModalFormLogin>
+            <Link href="../">
+              <ModalLogo>
+                <ModalLogoImg src="../img/logo_modal.png" alt="logo" />
+              </ModalLogo>
+            </Link>
+            <ModalInput
               type="text"
               name="login"
               placeholder="Почта"
             />
-            <input
-              className="modal__input password-first"
+            <ModalInput
               type="password"
               name="password"
               placeholder="Пароль"
             />
-            <input
-              className="modal__input password-double"
+            <ModalInput
               type="password"
               name="password"
               placeholder="Повторите пароль"
             />
-            <button className="modal__btn-signup-ent">
-              <a href="../index.html">Зарегистрироваться</a>
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
+            <BtnEnter>
+              <Link href="../index.html">Зарегистрироваться</Link>
+            </BtnEnter>
+          </ModalFormLogin>
+        </ModalBlock>
+      </SignUpContainer>
+    </Wrapper>
   );
 }
 export default SignUpOfApp;

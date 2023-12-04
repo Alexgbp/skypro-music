@@ -1,39 +1,214 @@
 import React from 'react';
 import './css/signIn.css';
+import styled from 'styled-components'
 
+const  Wrapper = styled.div`
+width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+`
+const Container = styled.div`
+max-width: 100%;
+height: 100vh;
+margin: 0 auto;
+position: relative;
+background-color: rgba(0, 0, 0, 0.85);
+`
+const ModalBlock = styled.div`
+position: absolute;
+    z-index: 2;
+    left: calc(50% - (366px / 2));
+    top: calc(50% - (439px / 2));
+    opacity: 1;
+`
+
+const ModalFormLogin = styled.form`
+width: 366px;
+    height: 439px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 43px 47px 47px 40px;
+`
+
+const ModalLogo = styled.div`
+width: 140px;
+    height: 21px;
+    margin-bottom: 34px;
+    background-color: transparent;
+`
+const ModalLogoImg = styled.img`
+width: 140px;
+    height: auto;
+`
+const ModalInput = styled.input`
+width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #d0cece;
+    padding: 8px 1px;
+    &:first-child {
+      margin-bottom: 30px;
+    }
+    &::-webkit-input-placeholder {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.05px;
+      color: #d0cece;
+    }
+    &:-ms-input-placeholder {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.05px;
+      color: #d0cece;
+    }
+    &::placeholder {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.05px;
+      color: #d0cece;
+    }
+`
+
+const ModalBtnEnter = styled.button`
+width: 278px;
+height: 52px;
+background-color: #580ea2;
+border-radius: 6px;
+margin-top: 60px;
+margin-bottom: 20px;
+border: none;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: center;
+-webkit-box-pack: center;
+-ms-flex-pack: center;
+justify-content: center;
+
+&:hover {
+  background-color: #3f007d;
+}
+&:active {
+  background-color: #271a58;
+}
+`
+const ModalBtnSignUp = styled.button`
+width: 278px;
+    height: 52px;
+    background-color: transparent;
+    border: 1px solid #d0cece;
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.05px;
+    color: #000000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    & a {
+      width: 100%;
+      height: 100%;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.05px;
+      color: #000000;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+    &:hover {
+      background-color: #f4f5f6;
+    }
+    &:active {
+      background-color: #d9d9d9;
+    }
+    
+`
+const ModalBtnEnterLink = styled.a`
+width: 100%;
+height: 100%;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
+letter-spacing: -0.05px;
+color: #ffffff;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: center;
+-webkit-box-pack: center;
+-ms-flex-pack: center;
+justify-content: center;
+`
 function SigInOfApp() {
   return (
-    <div className="wrapper">
-      <div className="container-enter">
-        <div className="modal__block">
-          <form className="modal__form-login" action="#">
-            <a href="../">
-              <div className="modal__logo">
-                <img src="../img/logo_modal.png" alt="logo" />
-              </div>
-            </a>
-            <input
-              className="modal__input login"
+    <Wrapper>
+      <Container>
+        <ModalBlock>
+          <ModalFormLogin action="#">
+            <ModalBtnEnterLink href="../">
+              <ModalLogo>
+                <ModalLogoImg src="../img/logo_modal.png" alt="logo" />
+              </ModalLogo>
+            </ModalBtnEnterLink>
+            <ModalInput
               type="text"
               name="login"
               placeholder="Почта"
             />
-            <input
-              className="modal__input password"
+            <ModalInput
               type="password"
               name="password"
               placeholder="Пароль"
             />
-            <button className="modal__btn-enter">
-              <a href="../index.html">Войти</a>
-            </button>
-            <button className="modal__btn-signup">
-              <a href="signup.html">Зарегистрироваться</a>
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
+            <ModalBtnEnter>
+              <ModalBtnEnterLink href="../index.html">Войти</ModalBtnEnterLink>
+            </ModalBtnEnter>
+            <ModalBtnSignUp>
+              <ModalBtnEnterLink href="signup.html">Зарегистрироваться</ModalBtnEnterLink>
+            </ModalBtnSignUp>
+          </ModalFormLogin>
+        </ModalBlock>
+      </Container>
+    </Wrapper>
   );
 }
 export default SigInOfApp;
