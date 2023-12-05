@@ -3,7 +3,7 @@ import NavMenu from './components/navMenu';
 import SearchBlock from './components/searchBlock';
 import SideBar from './components/sideBar';
 import AudioPlayer from './components/audioplayer/AudioPlayer.jsx';
-import Filter from './components/filter';
+import Filter from './components/filter/filter.jsx';
 import TrackList from './components/trackList';
 import { GlobalStyle } from './Global.styled.js';
 import * as S1 from './components/css/main-center-block.js';

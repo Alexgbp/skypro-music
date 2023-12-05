@@ -1,7 +1,7 @@
 import React from 'react';
-import { DataArray } from '../dataArray';
+import { DataArray } from './dataArray';
 import { useState } from 'react';
-import * as S from './css/filter'
+import * as S from './filter'
 
 export default function Filter() {
   const filterForAuthor = DataArray.map((element) => element.trackAuthor);
