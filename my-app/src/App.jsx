@@ -6,6 +6,7 @@ import SideBar from './components/sideBar';
 import AudioPlayer from './components/audioplayer/AudioPlayer.jsx';
 import Filter from './components/filter';
 import TrackList from './components/trackList';
+import { GlobalStyle } from './Global.styled.js';
 
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
   }, []);
 
   return (
-    <div className="wrapper">
+    <>
+    <GlobalStyle />
+       <div className="wrapper">
       <div className="container">
         <div>
           <main className="main">
@@ -45,6 +48,7 @@ function App() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

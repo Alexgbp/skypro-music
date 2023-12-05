@@ -130,7 +130,7 @@ width: 100%;
     color: #FFFFFF;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
+    display: flex;GlobalStyle
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
