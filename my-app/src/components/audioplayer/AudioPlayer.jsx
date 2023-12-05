@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './css/AudioPlayer';
+import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import PropTypes from 'prop-types';
 
