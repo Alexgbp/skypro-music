@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from "./css/searchBlock"
+import * as S from "./searchBlock"
 
 function SearchBlock() {
   return (

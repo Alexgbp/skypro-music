@@ -1,6 +1,6 @@
 import React from 'react';
-import BurgerMenu from './burgerMenu';
-import * as S from "./css/navMenu"
+import BurgerMenu from '../burger/burgerMenu.jsx';
+import * as S from "./navMenu"
 
 function NavMenu() {
   return (

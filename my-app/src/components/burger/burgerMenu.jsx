@@ -1,6 +1,6 @@
 import React from 'react';
 const { useState } = React;
-import * as S from "./css/navMenu"
+import * as S from "./burgerMenu"
 
 function BurgerMenu() {
   const [visible, setVisible] = useState(false);

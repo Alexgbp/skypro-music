@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import NavMenu from './components/navMenu';
-import SearchBlock from './components/searchBlock';
-import SideBar from './components/sideBar';
+import NavMenu from './components/navmenu/navMenu.jsx';
+import SearchBlock from './components/searchblock/searchBlock.jsx';
+import SideBar from './components/sidebar/sideBar.jsx';
 import AudioPlayer from './components/audioplayer/AudioPlayer.jsx';
 import Filter from './components/filter/filter.jsx';
-import TrackList from './components/trackList';
+import TrackList from './components/tracklist/trackList.jsx';
 import { GlobalStyle } from './Global.styled.js';
-import * as S1 from './components/css/main-center-block.js';
-import * as S2 from './components/css/center-block-h2.js';
-import * as S3 from './components/css/footer.js';
-import * as S4 from './components/css/wrapper.js';
-import * as S5 from './components/css/container.js';
-import * as S6 from './components/css/main.js';
+import * as S1 from './components/otherstyles/main-center-block.js';
+import * as S2 from './components/otherstyles/center-block-h2.js';
+import * as S3 from './components/otherstyles/footer.js';
+import * as S4 from './components/otherstyles/wrapper.js';
+import * as S5 from './components/otherstyles/container.js';
+import * as S6 from './components/otherstyles/main.js';
 
 function App() {
   const [loader, setLoader] = useState(false);

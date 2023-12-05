@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './css/trackList'
+import * as S from './trackList'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import PropTypes from 'prop-types';

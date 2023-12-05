@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/signUp.css';
+import '../signup/signUp.css';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
