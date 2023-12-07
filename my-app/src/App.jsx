@@ -1,12 +1,17 @@
-import './App.css';
 import React, { useEffect, useState } from 'react';
-import NavMenu from './components/navMenu';
-import SearchBlock from './components/searchBlock';
-import SideBar from './components/sideBar';
-import AudioPlayer from './components/audioPlayer';
-import Filter from './components/filter';
-import TrackList from './components/trackList';
-
+import NavMenu from './components/navmenu/navMenu.jsx';
+import SearchBlock from './components/searchblock/searchBlock.jsx';
+import SideBar from './components/sidebar/sideBar.jsx';
+import AudioPlayer from './components/audioplayer/AudioPlayer.jsx';
+import Filter from './components/filter/filter.jsx';
+import TrackList from './components/tracklist/trackList.jsx';
+import { GlobalStyle } from './Global.styled.js';
+import * as S1 from './components/otherstyles/main-center-block.js';
+import * as S2 from './components/otherstyles/center-block-h2.js';
+import * as S3 from './components/otherstyles/footer.js';
+import * as S4 from './components/otherstyles/wrapper.js';
+import * as S5 from './components/otherstyles/container.js';
+import * as S6 from './components/otherstyles/main.js';
 
 function App() {
   const [loader, setLoader] = useState(false);
@@ -21,30 +26,25 @@ function App() {
   }, []);
 
   return (
-    <div className="wrapper">
-      <div className="container">
-        <div>
-          <main className="main">
+    <>
+      <GlobalStyle />
+      <S4.Wrapper>
+        <S5.Container>
+          <S6.Main>
             <NavMenu />
-            <div className="main__centerblock centerblock">
+            <S1.MainCenterBlock>
               <SearchBlock />
-              <h2 className="centerblock__h2">Треки</h2>
+              <S2.CenterBlockH2>Треки</S2.CenterBlockH2>
               <Filter />
-              <TrackList 
-              loader={loader}
-              />
-            </div>
-            <SideBar 
-            loader={loader}
-            />
-          </main>
-          <AudioPlayer
-          loader={loader}
-          />
-          <footer className="footer" />
-        </div>
-      </div>
-    </div>
+              <TrackList loader={loader} />
+            </S1.MainCenterBlock>
+            <SideBar loader={loader} />
+          </S6.Main>
+          <AudioPlayer loader={loader} />
+          <S3.FooterBlock />
+        </S5.Container>
+      </S4.Wrapper>
+    </>
   );
 }
 

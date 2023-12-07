@@ -1,5 +1,6 @@
 export const DataArray = [
   {
+    id: 0,
     title: 'Guilt',
     trackAuthor: 'Nero',
     trackAlbumLink: 'Welcome Reality',
@@ -8,6 +9,7 @@ export const DataArray = [
     genre: 'Хип-хоп',
   },
   {
+    id: 1,
     title: 'Elektro',
     trackAuthor: 'Dynoro, Outwork, Mr. Gee',
     trackAlbumLink: 'Elektro',
@@ -16,6 +18,7 @@ export const DataArray = [
     genre: 'Поп-музыка',
   },
   {
+    id: 2,
     title: 'I’m Fire',
     trackAuthor: 'Ali Bakgor',
     trackAlbumLink: 'I’m Fire',
@@ -24,6 +27,7 @@ export const DataArray = [
     genre: 'Техно',
   },
   {
+    id: 3,
     title: 'Non Stop',
     trackAuthor: 'Стоункат, Psychopath',
     trackAlbumLink: 'Non Stop',
@@ -32,6 +36,7 @@ export const DataArray = [
     genre: 'Инди',
   },
   {
+    id: 4,
     title: 'Run Run',
     trackAuthor: 'Jaded, Will Clarke, AR/CO',
     trackAlbumLink: 'Run Run',
@@ -40,6 +45,7 @@ export const DataArray = [
     genre: 'Рок',
   },
   {
+    id: 5,
     title: 'Eyes on Fire',
     trackAuthor: 'Blue Foundation, Zeds Dead',
     trackAlbumLink: 'Eyes on Fire',
@@ -48,6 +54,7 @@ export const DataArray = [
     genre: 'Из кино',
   },
   {
+    id: 6,
     title: 'Mucho Bien',
     trackAuthor: 'HYBIT, Mr. Black, Offer Nissim, Hi Profile',
     trackAlbumLink: 'Mucho Bien',
@@ -56,6 +63,7 @@ export const DataArray = [
     genre: 'Нью-эйдж',
   },
   {
+    id: 7,
     title: 'Knives n Cherries',
     trackAuthor: 'minthaze',
     trackAlbumLink: 'Captivating',
@@ -64,6 +72,7 @@ export const DataArray = [
     genre: 'Классика',
   },
   {
+    id: 8,
     title: 'Knives n Cherries',
     trackAuthor: 'minthaze',
     trackAlbumLink: 'Captivating',
@@ -72,6 +81,7 @@ export const DataArray = [
     genre: 'Поп-музыка',
   },
   {
+    id: 9,
     title: 'Knives n Cherries',
     trackAuthor: 'minthaze',
     trackAlbumLink: 'Captivating',
@@ -80,6 +90,7 @@ export const DataArray = [
     genre: 'Рок',
   },
   {
+    id: 10,
     title: 'Knives n Cherries',
     trackAuthor: 'minthaze',
     trackAlbumLink: 'Captivating',
@@ -88,6 +99,7 @@ export const DataArray = [
     genre: 'Танцевальная',
   },
   {
+    id: 11,
     title: 'Knives n Cherries',
     trackAuthor: 'minthaze',
     trackAlbumLink: 'Captivating',
@@ -96,6 +108,7 @@ export const DataArray = [
     genre: 'Хип-хоп',
   },
   {
+    id: 12,
     title: 'Knives n Cherries',
     trackAuthor: 'minthaze',
     trackAlbumLink: 'Captivating',
@@ -104,6 +117,7 @@ export const DataArray = [
     genre: 'Из кино',
   },
   {
+    id: 13,
     title: 'Knives n Cherries',
     trackAuthor: 'minthaze',
     trackAlbumLink: 'Captivating',
@@ -112,6 +126,7 @@ export const DataArray = [
     genre: 'Нью-эйдж',
   },
   {
+    id: 14,
     title: 'How Deep Is Your Love',
     trackAuthor: 'Calvin Harris, Disciples',
     trackAlbumLink: 'How Deep Is Your Love',
@@ -120,6 +135,7 @@ export const DataArray = [
     genre: 'Техно',
   },
   {
+    id: 15,
     title: 'Morena',
     trackAuthor: 'Tom Boxer',
     trackAlbumLink: 'Soundz Made in Romania',
