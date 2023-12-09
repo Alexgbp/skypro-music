@@ -1,6 +1,7 @@
 import React from 'react';
 const { useState } = React;
 import * as S from "./burgerMenu"
+import {Link} from 'react-router-dom'
 
 function BurgerMenu() {
   const [visible, setVisible] = useState(false);
@@ -21,14 +22,18 @@ function BurgerMenu() {
             </S.MenuLink>
           </S.MenuItem>
           <S.MenuItem>
-            <S.MenuLink href="#">
+           <Link to='/my-playlist'>
+           <S.MenuLink href="#">
               Мой плейлист
             </S.MenuLink>
+           </Link>
           </S.MenuItem>
           <S.MenuItem>
+            <Link to='/login'>
             <S.MenuLink href="../signin.html">
               Войти
             </S.MenuLink>
+            </Link>
           </S.MenuItem>
         </S.MenuList>
       </S.NavMenu>

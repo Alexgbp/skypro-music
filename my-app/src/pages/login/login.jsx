@@ -1,5 +1,6 @@
 import React from 'react';
 import * as S from './loginPage'
+import {Link} from 'react-router-dom'
 
 function LoginPage() {
   return (
@@ -26,7 +27,9 @@ function LoginPage() {
               <S.ModalBtnEnterLink href="../index.html">Войти</S.ModalBtnEnterLink>
             </S.ModalBtnEnter>
             <S.ModalBtnSignUp>
+              <Link to='/registration'>
               <S.ModalBtnEnterLink href="signup.html">Зарегистрироваться</S.ModalBtnEnterLink>
+              </Link>
             </S.ModalBtnSignUp>
           </S.ModalFormLogin>
         </S.ModalBlock>
