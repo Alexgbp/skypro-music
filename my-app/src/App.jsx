@@ -1,9 +1,11 @@
 import React from 'react';
-import { MainPage } from './pages/main-page/mainPage';
+import { AppRoutes } from './routes';
 
 function App() {
   return (
-      <MainPage />
+      <>
+      <AppRoutes />
+      </>
   );
 }
 
