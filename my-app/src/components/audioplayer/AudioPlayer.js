@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Bar = styled.div`
+    visibility: hidden;
     position: absolute;
     bottom: 100px;
     left: 0;
