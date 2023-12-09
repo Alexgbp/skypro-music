@@ -65,7 +65,7 @@ export default function Filter() {
       </S.MenuBlock>
 
       <S.MenuBlock>
-        <S.FilterButton onClick={toggleMenuGenre}>
+        <S.FilterButton  onClick={toggleMenuGenre}>
           жанру
         </S.FilterButton>
         <S.CountBlock $visible={menuGenre}>{filterForGenre.length}</S.CountBlock>
