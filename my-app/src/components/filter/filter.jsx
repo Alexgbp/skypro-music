@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataArray } from './dataArray';
+import { DataArray } from '../../dataArray';
 import { useState } from 'react';
 import * as S from './filter'
 

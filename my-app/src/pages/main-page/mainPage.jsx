@@ -16,6 +16,7 @@ import * as S6 from '../../components/otherstyles/main.js';
  export function MainPage() {
   const [loader, setLoader] = useState(false);
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoader(!loader);

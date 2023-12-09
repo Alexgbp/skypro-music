@@ -1,12 +1,11 @@
 import React from 'react';
-import { AppRoutes } from './routes';
+
+import { AppRoutes } from './routes.jsx';
 
 function App() {
-  return (
-      <>
-      <AppRoutes />
-      </>
-  );
+return(
+  <AppRoutes />
+)
 }
 
 export default App;
