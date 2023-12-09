@@ -1,8 +1,7 @@
 import React from 'react';
-import '../signup/signUp.css';
-import * as S from './signUp'
+import * as S from './registration'
 
-function SignUpOfApp() {
+function Registration() {
   return (
     <S.Wrapper>
       <S.SignUpContainer>
@@ -37,4 +36,4 @@ function SignUpOfApp() {
     </S.Wrapper>
   );
 }
-export default SignUpOfApp;
+export default Registration;

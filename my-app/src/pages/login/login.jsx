@@ -1,8 +1,7 @@
 import React from 'react';
-import '../signin/signIn.css';
-import * as S from './signIn'
+import * as S from './loginPage'
 
-function SigInOfApp() {
+function LoginPage() {
   return (
     <S.Wrapper>
       <S.Container>
@@ -35,4 +34,4 @@ function SigInOfApp() {
     </S.Wrapper>
   );
 }
-export default SigInOfApp;
+export default LoginPage;
