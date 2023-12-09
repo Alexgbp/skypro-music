@@ -17,9 +17,11 @@ function BurgerMenu() {
       <S.NavMenu $visible={visible}>
         <S.MenuList>
           <S.MenuItem>
+            <Link to='/'>
             <S.MenuLink href="#">
               Главное
             </S.MenuLink>
+            </Link>
           </S.MenuItem>
           <S.MenuItem>
            <Link to='/my-playlist'>
