@@ -15,7 +15,7 @@ background-color: rgba(0, 0, 0, 0.85);
 export const ModalBlock = styled.div`
 position: absolute;
     z-index: 2;
-    left: calc(50% - (366px / 2));
+    left: calc(50% - (370px / 2));
     top: calc(50% - (439px / 2));
     opacity: 1;
 `
@@ -49,12 +49,12 @@ width: 140px;
     height: auto;
 `
 export const ModalInput = styled.input`
-width: 100%;
+    width: 100%;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid #d0cece;
-    padding: 8px 1px;
+    padding: 13px 4px;
     &:first-child {
       margin-bottom: 30px;
     }
@@ -74,7 +74,7 @@ width: 100%;
       letter-spacing: -0.05px;
       color: #d0cece;
     }
-    &::placeholder {
+    &:placeholder {
       font-style: normal;
       font-weight: 400;
       font-size: 18px;

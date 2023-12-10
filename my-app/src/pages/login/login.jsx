@@ -8,7 +8,7 @@ function LoginPage() {
       <S.Container>
         <S.ModalBlock>
           <S.ModalFormLogin action="#">
-            <S.ModalBtnEnterLink href="../">
+            <S.ModalBtnEnterLink>
               <S.ModalLogo>
                 <S.ModalLogoImg src="../img/logo_modal.png" alt="logo" />
               </S.ModalLogo>
@@ -24,11 +24,11 @@ function LoginPage() {
               placeholder="Пароль"
             />
             <S.ModalBtnEnter>
-              <S.ModalBtnEnterLink href="../index.html">Войти</S.ModalBtnEnterLink>
+              <S.ModalBtnEnterLink>Войти</S.ModalBtnEnterLink>
             </S.ModalBtnEnter>
             <S.ModalBtnSignUp>
               <Link to='/registration'>
-              <S.ModalBtnEnterLink href="signup.html">Зарегистрироваться</S.ModalBtnEnterLink>
+              <S.ModalBtnEnterLink>Зарегистрироваться</S.ModalBtnEnterLink>
               </Link>
             </S.ModalBtnSignUp>
           </S.ModalFormLogin>
