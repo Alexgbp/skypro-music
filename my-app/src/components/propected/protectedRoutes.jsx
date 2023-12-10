@@ -1,13 +1,14 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export function protectedRoutes({
-  children,
-  redirectPath = '/login',
-  isRegistred,
-}) {
+export function ProtectedRoutes({ redirectPath = '/login', isRegistred}) {
+  ProtectedRoutes.propTypes = {
+    redirectPath: PropTypes.bool.isRequired,
+    isRegistred: PropTypes.bool.isRequired
+  };
   if (!isRegistred) {
     return <Navigate to={redirectPath} replace={true} />;
   }
-  return children;
+  return <Outlet />;
 }
