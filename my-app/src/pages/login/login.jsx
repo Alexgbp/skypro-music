@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './loginPage'
 import {Link} from 'react-router-dom'
 
-function LoginPage() {
+function LoginPage({onClick}) {
   return (
     <S.Wrapper>
       <S.Container>
@@ -24,7 +24,7 @@ function LoginPage() {
               placeholder="Пароль"
             />
             <S.ModalBtnEnter>
-              <S.ModalBtnEnterLink>Войти</S.ModalBtnEnterLink>
+              <S.ModalBtnEnterLink onClick={onClick}>Войти</S.ModalBtnEnterLink>
             </S.ModalBtnEnter>
             <S.ModalBtnSignUp>
               <Link to='/registration'>
