@@ -3,9 +3,12 @@ import * as S4 from '../../components/otherstyles/wrapper.js';
 import * as S5 from '../../components/otherstyles/container.js';
 import * as S6 from '../../components/otherstyles/main.js';
 import { GlobalStyle } from "../../Global.styled.js";
+import { useParams } from 'react-router-dom';
 
 
 export function Category() {
+  const params  = useParams();
+  console.log(params.id);
   return (
     <>
     <GlobalStyle />

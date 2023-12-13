@@ -13,7 +13,7 @@ import * as S4 from '../../components/otherstyles/wrapper.js';
 import * as S5 from '../../components/otherstyles/container.js';
 import * as S6 from '../../components/otherstyles/main.js';
 
- export function MainPage() {
+ export function MainPage({onClick}) {
   const [loader, setLoader] = useState(false);
 
 
@@ -39,7 +39,7 @@ import * as S6 from '../../components/otherstyles/main.js';
               <Filter />
               <TrackList loader={loader} />
             </S1.MainCenterBlock>
-            <SideBar loader={loader} />
+            <SideBar loader={loader} onClick={onClick} />
           </S6.Main>
           <AudioPlayer loader={loader} />
           <S3.FooterBlock />

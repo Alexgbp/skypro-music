@@ -19,15 +19,15 @@ export function AppRoutes() {
     setUser(localStorage.getItem("user"));
     navigate("/" , {replace: true})
   };
-  // const signOut = () =>{
-  //   localStorage.removeItem("user")
-  //   setUser(null)
-  //   navigate("/login" , {replace: true})
-  // };
+  const signOut = () =>{
+    localStorage.removeItem("user")
+    setUser(null)
+    navigate("/login" , {replace: true})
+  };
   return (
     <Routes>
       <Route element={<ProtectedRoutes isRegistred={Boolean(user)} />}>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage onClick={signOut} />} />
         <Route path="/favorites" element={<MyPlayList />} />
         <Route path="/category/:id" element={<Category />} />
       </Route>
