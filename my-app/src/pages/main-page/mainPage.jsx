@@ -32,7 +32,7 @@ import * as S6 from '../../components/otherstyles/main.js';
       <S4.Wrapper>
         <S5.Container>
           <S6.Main>
-            <NavMenu user={user} />
+            <NavMenu user={user}  onClick={onClick} />
             <S1.MainCenterBlock>
               <SearchBlock />
               <S2.CenterBlockH2>Треки</S2.CenterBlockH2>
