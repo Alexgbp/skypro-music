@@ -27,7 +27,7 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route element={<ProtectedRoutes isRegistred={Boolean(user)} />}>
-        <Route path="/" element={<MainPage onClick={signOut} />} />
+        <Route path="/" element={<MainPage user={user} onClick={signOut} />} />
         <Route path="/favorites" element={<MyPlayList />} />
         <Route path="/category/:id" element={<Category />} />
       </Route>

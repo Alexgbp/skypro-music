@@ -13,7 +13,7 @@ import * as S4 from '../../components/otherstyles/wrapper.js';
 import * as S5 from '../../components/otherstyles/container.js';
 import * as S6 from '../../components/otherstyles/main.js';
 
- export function MainPage({onClick}) {
+ export function MainPage({onClick, user}) {
   const [loader, setLoader] = useState(false);
 
 
@@ -32,7 +32,7 @@ import * as S6 from '../../components/otherstyles/main.js';
       <S4.Wrapper>
         <S5.Container>
           <S6.Main>
-            <NavMenu />
+            <NavMenu user={user} />
             <S1.MainCenterBlock>
               <SearchBlock />
               <S2.CenterBlockH2>Треки</S2.CenterBlockH2>
