@@ -28,7 +28,7 @@ function Registration() {
               placeholder="Повторите пароль"
             />
             <S.BtnEnter>
-              <S.Link href="../index.html">Зарегистрироваться</S.Link>
+              <S.Link>Зарегистрироваться</S.Link>
             </S.BtnEnter>
           </S.ModalFormLogin>
         </S.ModalBlock>
