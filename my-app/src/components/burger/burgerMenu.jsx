@@ -3,7 +3,7 @@ const { useState } = React;
 import * as S from './burgerMenu';
 import { NavLink } from 'react-router-dom';
 
-function BurgerMenu({user}) {
+function BurgerMenu({user, onClick}) {
   const [visible, setVisible] = useState(false);
   const toglleState = () => setVisible(!visible);
 
@@ -28,7 +28,7 @@ function BurgerMenu({user}) {
           </S.MenuItem>
           <S.MenuItem>
             <NavLink  to="/login">
-              <S.MenuLink>{user ? "Выйти" : "Войти"}</S.MenuLink>
+              <S.MenuLink onClick={onClick}>{user ? "Выйти" : "Войти"}</S.MenuLink>
             </NavLink>
           </S.MenuItem>
         </S.MenuList>
