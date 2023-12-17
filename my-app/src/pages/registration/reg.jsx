@@ -1,13 +1,14 @@
 import React from 'react';
 import * as S from './registration'
 
+
 function Registration() {
   return (
     <S.Wrapper>
       <S.SignUpContainer>
         <S.ModalBlock>
           <S.ModalFormLogin>
-            <S.Link href="../">
+            <S.Link href="/login">
               <S.ModalLogo>
                 <S.ModalLogoImg src="../img/logo_modal.png" alt="logo" />
               </S.ModalLogo>
