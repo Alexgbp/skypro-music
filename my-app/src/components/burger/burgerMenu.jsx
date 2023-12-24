@@ -1,8 +1,9 @@
 import React from 'react';
 const { useState } = React;
-import * as S from "./burgerMenu"
+import * as S from './burgerMenu';
+import { NavLink } from 'react-router-dom';
 
-function BurgerMenu() {
+function BurgerMenu({user, onClick}) {
   const [visible, setVisible] = useState(false);
   const toglleState = () => setVisible(!visible);
 
@@ -16,19 +17,19 @@ function BurgerMenu() {
       <S.NavMenu $visible={visible}>
         <S.MenuList>
           <S.MenuItem>
-            <S.MenuLink href="#">
-              Главное
-            </S.MenuLink>
+            <NavLink to="/">
+              <S.MenuLink>Главное</S.MenuLink>
+            </NavLink>
           </S.MenuItem>
           <S.MenuItem>
-            <S.MenuLink href="#">
-              Мой плейлист
-            </S.MenuLink>
+            <NavLink to="/favorites">
+               <S.MenuLink>Мой плейлист</S.MenuLink> 
+            </NavLink>
           </S.MenuItem>
           <S.MenuItem>
-            <S.MenuLink href="../signin.html">
-              Войти
-            </S.MenuLink>
+            <NavLink>
+              <S.MenuLink onClick={onClick}>{user ? "Выйти" : "Войти"}</S.MenuLink>
+            </NavLink>
           </S.MenuItem>
         </S.MenuList>
       </S.NavMenu>

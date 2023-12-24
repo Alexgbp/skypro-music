@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataArray } from './dataArray';
+import { DataArray } from '../../dataArray';
 import { useState } from 'react';
 import * as S from './filter'
 
@@ -39,8 +39,8 @@ export default function Filter() {
         <S.CountBlock $visible={menuAuthor}>{filterForAuthor.length}</S.CountBlock>
         <S.Menu $visible={menuAuthor}>
           <S.List>
-            {filterForAuthor.map((element) => (
-              <S.ListElement key={element.id}>
+            {filterForAuthor.map((element, index) => (
+              <S.ListElement key={index}>
                 <S.Link href="#">{element}</S.Link>
               </S.ListElement>
             ))}
@@ -55,8 +55,8 @@ export default function Filter() {
         <S.CountBlock $visible={menuYear}>{filterForYear.length}</S.CountBlock>
         <S.Menu $visible={menuYear}>
           <S.List>
-            {filterForYear.map((element) => (
-              <S.ListElement key={element.id}>
+            {filterForYear.map((element, index) => (
+              <S.ListElement key={index}>
                 <S.Link href="#">{element}</S.Link>
               </S.ListElement>
             ))}
@@ -65,14 +65,14 @@ export default function Filter() {
       </S.MenuBlock>
 
       <S.MenuBlock>
-        <S.FilterButton onClick={toggleMenuGenre}>
+        <S.FilterButton  onClick={toggleMenuGenre}>
           жанру
         </S.FilterButton>
         <S.CountBlock $visible={menuGenre}>{filterForGenre.length}</S.CountBlock>
         <S.Menu $visible={menuGenre}>
           <S.List>
-            {filterForGenre.map((element) => (
-              <S.ListElement key={element.id}>
+            {filterForGenre.map((element, index) => (
+              <S.ListElement key={index}>
                 <S.Link href="#">{element}</S.Link>
               </S.ListElement>
             ))}

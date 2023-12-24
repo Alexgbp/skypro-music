@@ -1,14 +1,14 @@
 import React from 'react';
-import '../signin/signIn.css';
-import * as S from './signIn'
+import * as S from './loginPage'
+import {Link} from 'react-router-dom'
 
-function SigInOfApp() {
+function LoginPage({onClick}) {
   return (
     <S.Wrapper>
       <S.Container>
         <S.ModalBlock>
           <S.ModalFormLogin action="#">
-            <S.ModalBtnEnterLink href="../">
+            <S.ModalBtnEnterLink>
               <S.ModalLogo>
                 <S.ModalLogoImg src="../img/logo_modal.png" alt="logo" />
               </S.ModalLogo>
@@ -24,10 +24,10 @@ function SigInOfApp() {
               placeholder="Пароль"
             />
             <S.ModalBtnEnter>
-              <S.ModalBtnEnterLink href="../index.html">Войти</S.ModalBtnEnterLink>
+              <S.ModalBtnEnterLink onClick={onClick}>Войти</S.ModalBtnEnterLink>
             </S.ModalBtnEnter>
             <S.ModalBtnSignUp>
-              <S.ModalBtnEnterLink href="signup.html">Зарегистрироваться</S.ModalBtnEnterLink>
+              <Link to='/registration'>Зарегистрироваться</Link>
             </S.ModalBtnSignUp>
           </S.ModalFormLogin>
         </S.ModalBlock>
@@ -35,4 +35,4 @@ function SigInOfApp() {
     </S.Wrapper>
   );
 }
-export default SigInOfApp;
+export default LoginPage;

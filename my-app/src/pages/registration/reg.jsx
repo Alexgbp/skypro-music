@@ -1,14 +1,14 @@
 import React from 'react';
-import '../signup/signUp.css';
-import * as S from './signUp'
+import * as S from './registration'
 
-function SignUpOfApp() {
+
+function Registration() {
   return (
     <S.Wrapper>
       <S.SignUpContainer>
         <S.ModalBlock>
           <S.ModalFormLogin>
-            <S.Link href="../">
+            <S.Link href="/login">
               <S.ModalLogo>
                 <S.ModalLogoImg src="../img/logo_modal.png" alt="logo" />
               </S.ModalLogo>
@@ -29,7 +29,7 @@ function SignUpOfApp() {
               placeholder="Повторите пароль"
             />
             <S.BtnEnter>
-              <S.Link href="../index.html">Зарегистрироваться</S.Link>
+              <S.Link>Зарегистрироваться</S.Link>
             </S.BtnEnter>
           </S.ModalFormLogin>
         </S.ModalBlock>
@@ -37,4 +37,4 @@ function SignUpOfApp() {
     </S.Wrapper>
   );
 }
-export default SignUpOfApp;
+export default Registration;

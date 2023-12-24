@@ -3,8 +3,9 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import PropTypes from 'prop-types'; 
 import * as S from "./sideBar"
+import { Link } from 'react-router-dom';
 
- export default function SideBar({loader}) {
+ export default function SideBar({loader, onClick}) {
   SideBar.propTypes = {
     loader: PropTypes.bool.isRequired 
   }; 
@@ -12,7 +13,7 @@ import * as S from "./sideBar"
     <S.MainSideBar>
       <S.SideBarPersonal>
         <S.SideBarPersonalName>Sergey.Ivanov</S.SideBarPersonalName>
-        <S.SideBarIcon>
+        <S.SideBarIcon onClick={onClick}>
           <svg alt="logout">
             <use xlinkHref="img/icon/sprite.svg#logout" />
           </svg>
@@ -22,28 +23,28 @@ import * as S from "./sideBar"
         <S.SideBarList>
         <SkeletonTheme baseColor='grey' >
           <S.SideBarItem>
-            {loader ? <S.SideBarLink href="#">
+            {loader ? <Link to="/category/1"><S.SideBarLink>
               <S.SideBarImg
                 src="img/playlist01.png"
                 alt="day's playlist"
               />
-            </S.SideBarLink> : <Skeleton height={150}  />}
+            </S.SideBarLink></Link> : <Skeleton height={150}  />}
           </S.SideBarItem>
           <S.SideBarItem>
-            {loader ?   <S.SideBarLink href="#">
+            {loader ?   <Link to="/category/2"><S.SideBarLink>
               <S.SideBarImg
                 src="img/playlist02.png"
                 alt="day's playlist"
               />
-            </S.SideBarLink>: <Skeleton height={150} />}
+            </S.SideBarLink></Link>: <Skeleton height={150} />}
           </S.SideBarItem>
           <S.SideBarItem>
-            {loader ?  <S.SideBarLink href="#">
+            {loader ?  <Link to="/category/3"><S.SideBarLink>
               <S.SideBarImg
                 src="img/playlist03.png"
                 alt="day's playlist"
               />
-            </S.SideBarLink> : <Skeleton height={150} />}
+            </S.SideBarLink></Link> : <Skeleton height={150} />}
           </S.SideBarItem>
           </SkeletonTheme> 
         </S.SideBarList>
