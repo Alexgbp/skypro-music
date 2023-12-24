@@ -21,14 +21,11 @@ import { getAllTracks } from "../../components/api/api.jsx";
   const [loader, setLoader] = useState(false);
   const [data, setDataArray] = useState([]);
 
- 
-
   useEffect(() => {
-    getAllTracks().then((data) => {
-      setLoader(true)
-      setDataArray(data)
-      
-    })
+      getAllTracks().then((data) => {
+        setLoader(true);
+        setDataArray(data);
+      });
   }, []);
 
   return (
