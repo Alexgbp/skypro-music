@@ -12,6 +12,7 @@ import * as S3 from '../../components/otherstyles/footer.js';
 import * as S4 from '../../components/otherstyles/wrapper.js';
 import * as S5 from '../../components/otherstyles/container.js';
 import * as S6 from '../../components/otherstyles/main.js';
+import { dataArray } from '../../dataArray';
 
  export function MainPage({onClick, user}) {
   const [loader, setLoader] = useState(false);
@@ -37,7 +38,7 @@ import * as S6 from '../../components/otherstyles/main.js';
               <SearchBlock />
               <S2.CenterBlockH2>Треки</S2.CenterBlockH2>
               <Filter />
-              <TrackList loader={loader} />
+              <TrackList loader={loader} dataArray={dataArray} />
             </S1.MainCenterBlock>
             <SideBar loader={loader} onClick={onClick} />
           </S6.Main>
