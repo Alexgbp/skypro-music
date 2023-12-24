@@ -1,12 +1,11 @@
 import React from 'react';
 import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import PropTypes from 'prop-types';
+
 
 function AudioPlayer({loader}) {
-  AudioPlayer.propTypes = {
-    loader: PropTypes.bool.isRequired
-  };
+ 
+
   return (
     <S.Bar>
       <S.BarContent>

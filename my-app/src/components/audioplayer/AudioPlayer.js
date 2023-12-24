@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Bar = styled.div`
-    visibility: hidden;
+    visibility: ${(props) => props.$visible ? "visible" : "hidden"};
     position: absolute;
     bottom: 100px;
     left: 0;

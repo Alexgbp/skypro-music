@@ -3,7 +3,8 @@ import * as S from './trackList';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-function TrackList({ loader, array }) {
+function TrackList({ loader, array}) {
+  
   
   return (
     <S.CenterBlockContent>
@@ -44,7 +45,7 @@ function TrackList({ loader, array }) {
                       )}
                     </S.TrackTitleImg>
                     {loader ? (
-                      <S.TrackTitleLink href="http://">
+                      <S.TrackTitleLink>
                         {element.name}
                         <S.TrackTitleSpan />
                       </S.TrackTitleLink>
@@ -54,7 +55,7 @@ function TrackList({ loader, array }) {
                   </S.TrackTitle>
                   <S.TrackAuthor>
                     {loader ? (
-                      <S.TrackAuthorLink href="http://">
+                      <S.TrackAuthorLink>
                         {element.author}
                       </S.TrackAuthorLink>
                     ) : (
@@ -63,7 +64,7 @@ function TrackList({ loader, array }) {
                   </S.TrackAuthor>
                   <S.TrackAlbum>
                     {loader ? (
-                      <S.TrackAlbumLink href="http://">
+                      <S.TrackAlbumLink>
                         {element.album}
                       </S.TrackAlbumLink>
                     ) : (
