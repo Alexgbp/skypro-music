@@ -4,7 +4,6 @@ import SearchBlock from '../../components/searchblock/searchBlock.jsx';
 import SideBar from '../../components/sidebar/sideBar.jsx';
 import AudioPlayer from '../../components/audioplayer/AudioPlayer.jsx';
 import Filter from '../../components/filter/filter.jsx';
-
 import TrackList from '../../components/tracklist/trackList.jsx';
 import { GlobalStyle } from '../../Global.styled.js';
 import * as S1 from '../../components/otherstyles/main-center-block.js';
@@ -13,6 +12,8 @@ import * as S3 from '../../components/otherstyles/footer.js';
 import * as S4 from '../../components/otherstyles/wrapper.js';
 import * as S5 from '../../components/otherstyles/container.js';
 import * as S6 from '../../components/otherstyles/main.js';
+import * as S7 from './mainPage.js'
+
 
 import { getAllTracks } from "../../components/api/api.jsx";
 
@@ -20,11 +21,15 @@ import { getAllTracks } from "../../components/api/api.jsx";
 
   const [loader, setLoader] = useState(false);
   const [data, setDataArray] = useState([]);
+  const [newError, setNewError] = useState(null)
 
   useEffect(() => {
       getAllTracks().then((data) => {
         setLoader(true);
         setDataArray(data);
+      })
+      .catch((error) =>{
+        setNewError(error.message)
       });
   }, []);
 
@@ -39,7 +44,7 @@ import { getAllTracks } from "../../components/api/api.jsx";
               <SearchBlock />
               <S2.CenterBlockH2>Треки</S2.CenterBlockH2>
               <Filter />
-              <TrackList loader={loader}  array={data}/>
+              {loader ? <TrackList loader={loader}  array={data}/>  : <S7.ErrorMessage>{newError}</S7.ErrorMessage> }
             </S1.MainCenterBlock>
             <SideBar loader={loader}  onClick={onClick} />
           </S6.Main>
