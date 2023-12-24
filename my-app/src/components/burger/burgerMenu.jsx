@@ -17,18 +17,18 @@ function BurgerMenu({user, onClick}) {
       <S.NavMenu $visible={visible}>
         <S.MenuList>
           <S.MenuItem>
-            <NavLink to="/">Главная 
-              {/* <S.MenuLink>Главное</S.MenuLink> */}
+            <NavLink to="/">
+              <S.MenuLink>Главное</S.MenuLink>
             </NavLink>
           </S.MenuItem>
           <S.MenuItem>
-            <NavLink to="/favorites">Мой плейлист
-              {/* <S.MenuLink>Мой плейлист</S.MenuLink> */}
+            <NavLink to="/favorites">
+               <S.MenuLink>Мой плейлист</S.MenuLink> 
             </NavLink>
           </S.MenuItem>
           <S.MenuItem>
-            <NavLink onClick={onClick}  to="/login">{user ? "Выйти" : "Войти"}
-              {/* <S.MenuLink onClick={onClick}>{user ? "Выйти" : "Войти"}</S.MenuLink> */}
+            <NavLink>
+              <S.MenuLink onClick={onClick}>{user ? "Выйти" : "Войти"}</S.MenuLink>
             </NavLink>
           </S.MenuItem>
         </S.MenuList>
