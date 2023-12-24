@@ -12,19 +12,19 @@ import * as S3 from '../../components/otherstyles/footer.js';
 import * as S4 from '../../components/otherstyles/wrapper.js';
 import * as S5 from '../../components/otherstyles/container.js';
 import * as S6 from '../../components/otherstyles/main.js';
-import { dataArray } from '../../dataArray';
+
+import { getAllTracks } from "../../components/api/api.jsx";
 
  export function MainPage({onClick, user}) {
   const [loader, setLoader] = useState(false);
-
+  const [data, setDataArray] = useState([])
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoader(!loader);
-    }, 5000);
-    return () => {
-      clearTimeout(timer);
-    };
+    getAllTracks().then((data) => {
+      setLoader(true)
+      setDataArray(data)
+      
+    })
   }, []);
 
   return (
@@ -38,9 +38,9 @@ import { dataArray } from '../../dataArray';
               <SearchBlock />
               <S2.CenterBlockH2>Треки</S2.CenterBlockH2>
               <Filter />
-              <TrackList loader={loader} dataArray={dataArray} />
+              <TrackList loader={loader}  array={data} />
             </S1.MainCenterBlock>
-            <SideBar loader={loader} onClick={onClick} />
+            <SideBar loader={loader}  onClick={onClick} />
           </S6.Main>
           <AudioPlayer loader={loader} />
           <S3.FooterBlock />

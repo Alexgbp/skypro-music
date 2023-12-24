@@ -1,10 +1,6 @@
-export function getAllTracks() {
-  const fetchTracks = fetch(
-    'https://skypro-music-api.skyeng.tech/catalog/track/all/',
-    {
-      method: 'GET',
-    }
-  );
-  const response = fetchTracks.json();
+export  async function getAllTracks() {
+  const fetchTracks =  await fetch(
+    'https://skypro-music-api.skyeng.tech/catalog/track/all/' );
+  const response =  await fetchTracks.json();
   return response;
 }

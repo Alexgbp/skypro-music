@@ -1,14 +1,10 @@
 import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import PropTypes from 'prop-types'; 
 import * as S from "./sideBar"
 import { Link } from 'react-router-dom';
 
  export default function SideBar({loader, onClick}) {
-  SideBar.propTypes = {
-    loader: PropTypes.bool.isRequired 
-  }; 
   return (
     <S.MainSideBar>
       <S.SideBarPersonal>
