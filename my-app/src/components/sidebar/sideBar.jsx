@@ -2,7 +2,7 @@ import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import * as S from "./sideBar"
-import { Link } from 'react-router-dom';
+
 
  export default function SideBar({loader, onClick}) {
   return (
@@ -19,28 +19,25 @@ import { Link } from 'react-router-dom';
         <S.SideBarList>
         <SkeletonTheme baseColor='grey' >
           <S.SideBarItem>
-            {loader ? <Link to="/category/1"><S.SideBarLink>
-              <S.SideBarImg
-                src="img/playlist01.png"
-                alt="day's playlist"
-              />
-            </S.SideBarLink></Link> : <Skeleton height={150}  />}
+            {loader ? <S.SideBarLink to="/category/1">
+              <S.SideBarImg src="img/playlist01.png" alt="day's playlist"/>
+            </S.SideBarLink> : <Skeleton height={150}  />}
           </S.SideBarItem>
           <S.SideBarItem>
-            {loader ?   <Link to="/category/2"><S.SideBarLink>
+            {loader ? <S.SideBarLink to="/category/2">
               <S.SideBarImg
                 src="img/playlist02.png"
                 alt="day's playlist"
               />
-            </S.SideBarLink></Link>: <Skeleton height={150} />}
+            </S.SideBarLink> : <Skeleton height={150} />}
           </S.SideBarItem>
           <S.SideBarItem>
-            {loader ?  <Link to="/category/3"><S.SideBarLink>
+            {loader ?  <S.SideBarLink to="/category/3">
               <S.SideBarImg
                 src="img/playlist03.png"
                 alt="day's playlist"
               />
-            </S.SideBarLink></Link> : <Skeleton height={150} />}
+            </S.SideBarLink> : <Skeleton height={150} />}
           </S.SideBarItem>
           </SkeletonTheme> 
         </S.SideBarList>
