@@ -1,5 +1,19 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
+
+export const Link = styled(NavLink)`
+color: #ffffff;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+cursor: pointer;
+&: hover{
+  color: #ad61ff;
+  transition: .3s all;
+  text-decoration: underline;
+}
+`
 
 export const BurgerNav = styled.div`
 cursor: pointer;
@@ -41,16 +55,3 @@ export const MenuItem = styled.li`
 `;
 
  
-
-export const MenuLink = styled.a`
-  color: #ffffff;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  cursor: pointer;
-  &: hover{
-    color: #ad61ff;
-    transition: .3s all;
-    text-decoration: underline;
-  }
-`;
