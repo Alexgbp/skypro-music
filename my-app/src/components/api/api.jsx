@@ -8,5 +8,4 @@ export  async function getAllTracks() {
     }
   const response =  await fetchTracks.json();
   return response;
-  
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-import { dataArray } from '../../dataArray';
 import { useState } from 'react';
 import * as S from './filter'
 
-export default function Filter() {
+export default function Filter({dataArray}) {
+  
   const filterForAuthor = dataArray.map((element) => element.author);
   const filterForYear = dataArray.map((element) => element.release_date);
   const filterForGenre = dataArray.map((element) => element.genre);

@@ -3,11 +3,11 @@ import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 
-function AudioPlayer({loader}) {
+function AudioPlayer({loader, currentTrack}) {
  
 
   return (
-    <S.Bar>
+    <S.Bar $visible={currentTrack}>
       <S.BarContent>
         <S.BarPlayerProgress>
           <S.BarPlayerBlock>
@@ -52,12 +52,12 @@ function AudioPlayer({loader}) {
                  </SkeletonTheme>
                   <S.TrackPlayAuthor>
                     {loader ? <S.TrackPlayAuthorLink href="http://">
-                      Ты та..
+                      {currentTrack.name}
                     </S.TrackPlayAuthorLink> : <Skeleton width={50} />}
                   </S.TrackPlayAuthor>
                   <S.TrackPlayAlbum>
                     {loader ? <S.TrackPlayAlbumLink href="http://">
-                      Баста
+                    {currentTrack.author}
                     </S.TrackPlayAlbumLink> : <Skeleton width={50} />}
                   </S.TrackPlayAlbum>
                 </S.TrackPlayConatin>

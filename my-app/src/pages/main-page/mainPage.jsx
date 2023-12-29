@@ -12,7 +12,7 @@ import * as S3 from '../../components/otherstyles/footer.js';
 import * as S4 from '../../components/otherstyles/wrapper.js';
 import * as S5 from '../../components/otherstyles/container.js';
 import * as S6 from '../../components/otherstyles/main.js';
-import * as S7 from './mainPage.js'
+import * as S7 from '../../pages/main-page/mainPage'
 
 
 import { getAllTracks } from "../../components/api/api.jsx";
@@ -22,15 +22,18 @@ import { getAllTracks } from "../../components/api/api.jsx";
   const [loader, setLoader] = useState(false);
   const [data, setDataArray] = useState([]);
   const [newError, setNewError] = useState(null)
+  const [currentTrack, setCurrentTrack] = useState(null)
 
   useEffect(() => {
-      getAllTracks().then((data) => {
+      getAllTracks()
+      .then((data) => {
         setLoader(true);
         setDataArray(data);
       })
       .catch((error) =>{
         setNewError(error.message)
-      });
+        setLoader(true);
+      })
   }, []);
 
   return (
@@ -43,12 +46,12 @@ import { getAllTracks } from "../../components/api/api.jsx";
             <S1.MainCenterBlock>
               <SearchBlock />
               <S2.CenterBlockH2>Треки</S2.CenterBlockH2>
-              <Filter />
-              {loader ? <TrackList loader={loader}  array={data}/>  : <S7.ErrorMessage>{newError}</S7.ErrorMessage> }
+              <Filter dataArray={data} />
+              {newError ? <S7.ErrorMessage>{newError}</S7.ErrorMessage> : <TrackList setCurrentTrack={setCurrentTrack} loader={loader}  array={data}/>}
             </S1.MainCenterBlock>
             <SideBar loader={loader}  onClick={onClick} />
           </S6.Main>
-          <AudioPlayer  loader={loader} />
+            {currentTrack ? <AudioPlayer currentTrack={currentTrack}  loader={loader} /> : null}
           <S3.FooterBlock />
         </S5.Container>
       </S4.Wrapper>

@@ -15,7 +15,7 @@ export function AppRoutes() {
   const [user, setUser] = useState(localStorage.getItem("user"));
    const signIn = (e) => {
     e.preventDefault()
-    localStorage.setItem("user", {login: 123})
+    localStorage.setItem("user", JSON.stringify({login: 123}))
     setUser(localStorage.getItem("user"));
     navigate("/" , {replace: true})
   };

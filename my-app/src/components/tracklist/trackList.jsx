@@ -1,11 +1,9 @@
 import React from 'react';
 import * as S from './trackList';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { CustomSkeleton } from '../skeleton/CustomSkeleton';
 
-function TrackList({ loader, array}) {
-  
-  
+function TrackList({ loader, array, setCurrentTrack}) {
   return (
     <S.CenterBlockContent>
       <S.ContentTitle>
@@ -29,47 +27,41 @@ function TrackList({ loader, array}) {
         </S.PlayListtitleCol>
       </S.ContentTitle>
       <S.ContentPlaylist>
+      {!loader && <CustomSkeleton />} 
+      {/* Если слева от амперсанда истина (true) мы показывем то что справа от && то есть скелетон или ничего не показываем.Но значения перемннной loader мы не меняем оно меняется стейтом , мы типа меняем его для условия */}
         {array.map((element) => {
           return (
-            <S.PlayListItem key={element.id}>
-              <SkeletonTheme baseColor="grey">
+            <S.PlayListItem onClick={() => setCurrentTrack(element)} key={element.id}>
+              
                 <S.PlayListTrack>
                   <S.TrackTitle>
                     <S.TrackTitleImg>
-                      {loader ? (
+                      
                         <S.TrackTitleSvg alt="music">
                           <use xlinkHref="img/icon/sprite.svg#icon-note" />
                         </S.TrackTitleSvg>
-                      ) : (
-                        <Skeleton width={50} height={55} />
-                      )}
+                     
                     </S.TrackTitleImg>
-                    {loader ? (
+                    
                       <S.TrackTitleLink>
                         {element.name}
                         <S.TrackTitleSpan />
                       </S.TrackTitleLink>
-                    ) : (
-                      <Skeleton width={375} />
-                    )}
+                    
                   </S.TrackTitle>
                   <S.TrackAuthor>
-                    {loader ? (
+                    
                       <S.TrackAuthorLink>
                         {element.author}
                       </S.TrackAuthorLink>
-                    ) : (
-                      <Skeleton width={318} />
-                    )}
+                    
                   </S.TrackAuthor>
                   <S.TrackAlbum>
-                    {loader ? (
+                    
                       <S.TrackAlbumLink>
                         {element.album}
                       </S.TrackAlbumLink>
-                    ) : (
-                      <Skeleton width={321} />
-                    )}
+                   
                   </S.TrackAlbum>
 
                   <S.TrackTimeSvg alt="time">
@@ -79,10 +71,10 @@ function TrackList({ loader, array}) {
                     {element.duration_in_seconds}
                   </S.TrackTimeText>
                 </S.PlayListTrack>
-                </SkeletonTheme>
             </S.PlayListItem>
           );
         })}
+        
       </S.ContentPlaylist>
     </S.CenterBlockContent>
   );
