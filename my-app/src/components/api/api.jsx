@@ -4,7 +4,7 @@ export  async function getAllTracks() {
       method: "GET"
     });
     if(!fetchTracks.ok){
-      throw new Error("Не удалось отобразить треки")
+      throw new Error("Не удалось загрузить плейлист, попробуйте позже")
     }
   const response =  await fetchTracks.json();
   return response;
