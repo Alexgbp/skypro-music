@@ -1,12 +1,12 @@
 import React from 'react';
-import { DataArray } from '../../dataArray';
 import { useState } from 'react';
 import * as S from './filter'
 
-export default function Filter() {
-  const filterForAuthor = DataArray.map((element) => element.trackAuthor);
-  const filterForYear = DataArray.map((element) => element.year);
-  const filterForGenre = DataArray.map((element) => element.genre);
+export default function Filter({dataArray}) {
+  
+  const filterForAuthor = dataArray.map((element) => element.author);
+  const filterForYear = dataArray.map((element) => element.release_date);
+  const filterForGenre = dataArray.map((element) => element.genre);
 
   const [menuAuthor, setMenuAuthor] = useState(false);
   const [menuYear, setMenuYear] = useState(false);

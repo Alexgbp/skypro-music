@@ -15,7 +15,7 @@ function Registration() {
             </S.Link>
             <S.ModalInput
               type="text"
-              name="login"
+              name="email"
               placeholder="Почта"
             />
             <S.ModalInput

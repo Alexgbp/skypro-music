@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Bar = styled.div`
-    visibility: hidden;
+    visibility: ${(props) => props.$visible ? "visible" : "hidden"};
     position: absolute;
     bottom: 100px;
     left: 0;
@@ -152,6 +152,7 @@ display: -webkit-box;
 `
 
 export const TrackPlayConatin = styled.div`
+padding-top: 10px;
 width: auto;
 display: -ms-grid;
 display: grid;

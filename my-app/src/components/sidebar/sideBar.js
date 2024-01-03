@@ -1,13 +1,7 @@
-
-
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
   
-  
-  
-  
-  
-  import styled from 'styled-components';
-
-  export const MainSideBar = styled.div`
+export const MainSideBar = styled.div`
     max-width: 418px;
     padding: 20px 90px 20px 78px;
   `;
@@ -77,7 +71,7 @@
       margin-bottom: 30px;
     }
   `;
-  export const SideBarLink = styled.a`
+  export const SideBarLink = styled(NavLink)`
   width: 100%;
       height: 100%;
   `

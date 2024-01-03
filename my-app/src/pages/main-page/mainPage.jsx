@@ -12,18 +12,26 @@ import * as S3 from '../../components/otherstyles/footer.js';
 import * as S4 from '../../components/otherstyles/wrapper.js';
 import * as S5 from '../../components/otherstyles/container.js';
 import * as S6 from '../../components/otherstyles/main.js';
+import * as S7 from '../../pages/main-page/mainPage'
+import { getAllTracks } from "../../api/api.jsx";
 
  export function MainPage({onClick, user}) {
-  const [loader, setLoader] = useState(false);
 
+  const [loader, setLoader] = useState(false);
+  const [data, setDataArray] = useState([]);
+  const [newError, setNewError] = useState(null)
+  const [currentTrack, setCurrentTrack] = useState(null)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoader(!loader);
-    }, 5000);
-    return () => {
-      clearTimeout(timer);
-    };
+      getAllTracks()
+      .then((data) => {
+        setLoader(true);
+        setDataArray(data);
+      })
+      .catch((error) =>{
+        setNewError(error.message)
+        setLoader(true);
+      })
   }, []);
 
   return (
@@ -36,12 +44,12 @@ import * as S6 from '../../components/otherstyles/main.js';
             <S1.MainCenterBlock>
               <SearchBlock />
               <S2.CenterBlockH2>Треки</S2.CenterBlockH2>
-              <Filter />
-              <TrackList loader={loader} />
+              <Filter dataArray={data} />
+              {newError ? <S7.ErrorMessage>{newError}</S7.ErrorMessage> : <TrackList setCurrentTrack={setCurrentTrack} loader={loader}  array={data}/>}
             </S1.MainCenterBlock>
-            <SideBar loader={loader} onClick={onClick} />
+            <SideBar loader={loader}  onClick={onClick} />
           </S6.Main>
-          <AudioPlayer loader={loader} />
+            {currentTrack ? <AudioPlayer currentTrack={currentTrack}  loader={loader} /> : null}
           <S3.FooterBlock />
         </S5.Container>
       </S4.Wrapper>

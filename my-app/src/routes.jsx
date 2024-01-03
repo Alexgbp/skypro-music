@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { MainPage } from './pages/main-page/mainPage';
+import { MainPage } from './pages/main-page/mainPage.jsx';
 import  LoginPage  from './pages/login/login';
 import Registration from './pages/registration/reg';
 import { PageNotFound } from './pages/not-found/pageNotFound';
@@ -15,7 +15,7 @@ export function AppRoutes() {
   const [user, setUser] = useState(localStorage.getItem("user"));
    const signIn = (e) => {
     e.preventDefault()
-    localStorage.setItem("user", {login: 123})
+    localStorage.setItem("user", JSON.stringify({login: 123}))
     setUser(localStorage.getItem("user"));
     navigate("/" , {replace: true})
   };
