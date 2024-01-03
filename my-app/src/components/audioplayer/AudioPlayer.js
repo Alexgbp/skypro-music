@@ -87,11 +87,18 @@ padding: 5px;
     -ms-flex-align: center;
     align-items: center;
 `
-export const PlayerBtnPlaySvg = styled.svg`
+export const PlayBtnPlaySvg = styled.svg`
 width: 22px;
     height: 20px;
     fill: #d9d9d9;
 `
+
+export const StopBtnPlaySvg = styled.svg`
+width: 22px;
+    height: 20px;
+    fill: #d9d9d9;
+`
+
 export const PlayerBtnNext = styled.div`
 padding: 5px;
     display: -webkit-box;

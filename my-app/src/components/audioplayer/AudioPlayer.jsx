@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 
 function AudioPlayer({loader, currentTrack}) {
- 
+ const buttonRef = useRef(false)
+  const [isPlaying, setPlaying] = useState(false)
 
+  const Play = () => {
+    buttonRef.current.play()
+    setPlaying(true)
+  }
+
+  const Stop = () => {
+    buttonRef.current.stop()
+    setPlaying(false)
+  }
+
+  const HandleClick = () => isPlaying ? Play : Stop
+  
   return (
+    
+    <>
+      <audio controls ref={buttonRef}>
+        <source src={currentTrack} type="audio/mpeg" />
+      </audio>
+
     <S.Bar $visible={currentTrack}>
       <S.BarContent>
         <S.BarPlayerProgress>
@@ -18,11 +37,10 @@ function AudioPlayer({loader, currentTrack}) {
                     <use xlinkHref="img/icon/sprite.svg#icon-prev" />
                   </S.PlayerBtnPrevSvg>
                 </S.PlayerBtnPrev>
-                <S.PlayerBtnPlay>
-                {/* was class _btn */}
-                  <S.PlayerBtnPlaySvg alt="play">
+                <S.PlayerBtnPlay onClick={HandleClick}>
+                  {isPlaying ?  <S.StopBtnPlaySvg alt="stop"> <use xlinkHref="img/icon/Group 48096409.svg" ></use></S.StopBtnPlaySvg> : <S.PlayBtnPlaySvg alt="play">
                     <use xlinkHref="img/icon/sprite.svg#icon-play" />
-                  </S.PlayerBtnPlaySvg>
+                  </S.PlayBtnPlaySvg>}
                 </S.PlayerBtnPlay>
                 <S.PlayerBtnNext>
                   <S.PlayerBtnNextSvg alt="next">
@@ -96,6 +114,7 @@ function AudioPlayer({loader, currentTrack}) {
         </S.BarPlayerProgress>
       </S.BarContent>
     </S.Bar>
+    </>
   );
 }
 
