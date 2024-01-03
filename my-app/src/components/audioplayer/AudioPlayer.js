@@ -152,6 +152,7 @@ display: -webkit-box;
 `
 
 export const TrackPlayConatin = styled.div`
+padding-top: 10px;
 width: auto;
 display: -ms-grid;
 display: grid;

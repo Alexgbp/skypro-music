@@ -13,9 +13,7 @@ import * as S4 from '../../components/otherstyles/wrapper.js';
 import * as S5 from '../../components/otherstyles/container.js';
 import * as S6 from '../../components/otherstyles/main.js';
 import * as S7 from '../../pages/main-page/mainPage'
-
-
-import { getAllTracks } from "../../components/api/api.jsx";
+import { getAllTracks } from "../../api/api.jsx";
 
  export function MainPage({onClick, user}) {
 
