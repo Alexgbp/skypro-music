@@ -27,7 +27,7 @@ function TrackList({ loader, array, setCurrentTrack}) {
         </S.PlayListtitleCol>
       </S.ContentTitle>
       <S.ContentPlaylist>
-      {!loader && <CustomSkeleton />} 
+      {!loader  && <CustomSkeleton />} 
       {/* Если слева от амперсанда истина (true) мы показывем то что справа от && то есть скелетон или ничего не показываем.Но значения перемннной loader мы не меняем оно меняется стейтом , мы типа меняем его для условия */}
         {array.map((element) => {
           return (
