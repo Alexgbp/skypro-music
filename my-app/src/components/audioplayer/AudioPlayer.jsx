@@ -5,26 +5,34 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 function AudioPlayer({loader, currentTrack}) {
  const buttonRef = useRef(false)
-  const [isPlaying, setPlaying] = useState(false)
+ 
+  const [isPlaying, setPlaying] = useState(true)
+  const [isLoop, setIsLoop] = useState(false)
 
-  const Play = () => {
+  const toggleLoop = () => {
+    console.log(buttonRef.current);
+    buttonRef.current.loop = !isLoop
+    setIsLoop(!isLoop)
+  }
+
+  const togglePlay = () => {
+    console.log(buttonRef.current);
     buttonRef.current.play()
     setPlaying(true)
   }
 
-  const Stop = () => {
-    buttonRef.current.stop()
+  const toggleStop = () => {
+    console.log(buttonRef.current);
+    buttonRef.current.pause()
     setPlaying(false)
   }
 
-  const HandleClick = () => isPlaying ? Play : Stop
+  console.log(isLoop);
   
   return (
     
     <>
-      <audio controls ref={buttonRef}>
-        <source src={currentTrack} type="audio/mpeg" />
-      </audio>
+      <audio loop={isLoop} autoPlay src={currentTrack.track_file} controls ref={buttonRef}></audio>
 
     <S.Bar $visible={currentTrack}>
       <S.BarContent>
@@ -37,8 +45,8 @@ function AudioPlayer({loader, currentTrack}) {
                     <use xlinkHref="img/icon/sprite.svg#icon-prev" />
                   </S.PlayerBtnPrevSvg>
                 </S.PlayerBtnPrev>
-                <S.PlayerBtnPlay onClick={HandleClick}>
-                  {isPlaying ?  <S.StopBtnPlaySvg alt="stop"> <use xlinkHref="img/icon/Group 48096409.svg" ></use></S.StopBtnPlaySvg> : <S.PlayBtnPlaySvg alt="play">
+                <S.PlayerBtnPlay onClick={isPlaying ? toggleStop : togglePlay}>
+                  {isPlaying ?  <S.StopBtnPlaySvg alt="stop"> <use xlinkHref="img/icon/sprite.svg#icon-pause" ></use></S.StopBtnPlaySvg> : <S.PlayBtnPlaySvg alt="play">
                     <use xlinkHref="img/icon/sprite.svg#icon-play" />
                   </S.PlayBtnPlaySvg>}
                 </S.PlayerBtnPlay>
@@ -47,7 +55,7 @@ function AudioPlayer({loader, currentTrack}) {
                     <use xlinkHref="img/icon/sprite.svg#icon-next" />
                   </S.PlayerBtnNextSvg>
                 </S.PlayerBtnNext>
-                <S.PlayerBtnRepeat>
+                <S.PlayerBtnRepeat onClick={toggleLoop}>
                   <S.PlayerBtnRepeatSvg alt="repeat">
                     <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                   </S.PlayerBtnRepeatSvg>
