@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { NotRealized } from '../notrealized/notRealized';
 
 
 function AudioPlayer({loader, currentTrack}) {
@@ -8,12 +9,15 @@ function AudioPlayer({loader, currentTrack}) {
  
   const [isPlaying, setPlaying] = useState(true)
   const [isLoop, setIsLoop] = useState(false)
+  
 
   const toggleLoop = () => {
     console.log(buttonRef.current);
     buttonRef.current.loop = !isLoop
     setIsLoop(!isLoop)
   }
+
+
 
   const togglePlay = () => {
     console.log(buttonRef.current);
@@ -27,7 +31,6 @@ function AudioPlayer({loader, currentTrack}) {
     setPlaying(false)
   }
 
-  console.log(isLoop);
   
   return (
     
@@ -40,7 +43,7 @@ function AudioPlayer({loader, currentTrack}) {
           <S.BarPlayerBlock>
             <S.BarPlayer>
               <S.BarPlayerControl>
-                <S.PlayerBtnPrev>
+                <S.PlayerBtnPrev onClick={NotRealized}>
                   <S.PlayerBtnPrevSvg alt="prev">
                     <use xlinkHref="img/icon/sprite.svg#icon-prev" />
                   </S.PlayerBtnPrevSvg>
@@ -50,7 +53,7 @@ function AudioPlayer({loader, currentTrack}) {
                     <use xlinkHref="img/icon/sprite.svg#icon-play" />
                   </S.PlayBtnPlaySvg>}
                 </S.PlayerBtnPlay>
-                <S.PlayerBtnNext>
+                <S.PlayerBtnNext onClick={NotRealized}>
                   <S.PlayerBtnNextSvg alt="next">
                     <use xlinkHref="img/icon/sprite.svg#icon-next" />
                   </S.PlayerBtnNextSvg>
@@ -60,7 +63,7 @@ function AudioPlayer({loader, currentTrack}) {
                     <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                   </S.PlayerBtnRepeatSvg>
                 </S.PlayerBtnRepeat>
-                <S.PlayerBtnShuffle>
+                <S.PlayerBtnShuffle onClick={NotRealized}>
                   <S.PlayerBtnShuffleSvg alt="shuffle">
                     <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
                   </S.PlayerBtnShuffleSvg>
