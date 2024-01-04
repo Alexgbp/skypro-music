@@ -291,6 +291,9 @@ width: 109px;
 export const VolumeProgressLine = styled.input`
 width: 109px;
 `
+export const AudioComponent = styled.audio`
+visibility: hidden
+`
   
  
   

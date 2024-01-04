@@ -31,12 +31,10 @@ function AudioPlayer({loader, currentTrack}) {
     setPlaying(false)
   }
 
-  
   return (
     
     <>
-      <audio loop={isLoop} autoPlay src={currentTrack.track_file} controls ref={buttonRef}></audio>
-
+    <S.AudioComponent loop={isLoop} autoPlay src={currentTrack.track_file} controls ref={buttonRef}></S.AudioComponent>
     <S.Bar $visible={currentTrack}>
       <S.BarContent>
         <S.BarPlayerProgress>
@@ -125,8 +123,10 @@ function AudioPlayer({loader, currentTrack}) {
         </S.BarPlayerProgress>
       </S.BarContent>
     </S.Bar>
+    
     </>
   );
 }
+
 
 export default AudioPlayer;
