@@ -36,6 +36,7 @@ flex-direction: row;
 -webkit-box-pack: justify;
 -ms-flex-pack: justify;
 justify-content: space-between;
+width: 100%
 `
 export const BarPlayer = styled.div`
 display: -webkit-box;
@@ -225,7 +226,7 @@ font-style: normal;
 `
 
 export const TrackPlayLikeDis = styled.div`
-display: -webkit-box;
+    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
@@ -235,7 +236,7 @@ display: -webkit-box;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    margin-left: 26%;
+    margin-left: 26px;
 `
 export const TrackPlayLike = styled.div`
 padding: 5px;
