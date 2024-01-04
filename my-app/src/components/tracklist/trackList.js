@@ -54,23 +54,13 @@ width: 12px;
     stroke: #696969;
 `
 export const ContentPlaylist = styled.ul`
-height: 900px;
 display: -webkit-box;
 display: -ms-flexbox;
 display: flex;
 -webkit-box-orient: vertical;
 -webkit-box-direction: normal;
 -ms-flex-direction: column;
-flex-direction: column;
-overflow-y: auto;
-&:: -webkit-scrollbar{
-    width: 15px;
-    background-color: #f9f9fd
-}
-&:: -webkit-scrollbar-thumb{
-    background-color: #535353;
-}
-
+flex-direction: column; 
 `
 export const PlayListItem = styled.li`
 width: 100%;
