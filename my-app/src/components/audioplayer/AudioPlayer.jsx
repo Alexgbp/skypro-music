@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, {useRef, useState } from 'react';
 import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { NotRealized } from '../notrealized/notRealized';
+
 
 
 function AudioPlayer({loader, currentTrack}) {
@@ -13,23 +14,25 @@ function AudioPlayer({loader, currentTrack}) {
 
   const toggleLoop = () => {
     console.log(buttonRef.current);
-    buttonRef.current.loop = !isLoop
+    buttonRef.current.loop
     setIsLoop(!isLoop)
   }
 
 
 
   const togglePlay = () => {
-    console.log(buttonRef.current);
     buttonRef.current.play()
     setPlaying(true)
   }
 
   const toggleStop = () => {
-    console.log(buttonRef.current);
+    console.log(buttonRef.current.currentTime);
+    console.log(buttonRef.current.duration);
     buttonRef.current.pause()
     setPlaying(false)
   }
+
+
 
   return (
     
@@ -57,7 +60,7 @@ function AudioPlayer({loader, currentTrack}) {
                   </S.PlayerBtnNextSvg>
                 </S.PlayerBtnNext>
                 <S.PlayerBtnRepeat onClick={toggleLoop}>
-                  <S.PlayerBtnRepeatSvg alt="repeat">
+                  <S.PlayerBtnRepeatSvg $click={isLoop} alt="repeat">
                     <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                   </S.PlayerBtnRepeatSvg>
                 </S.PlayerBtnRepeat>

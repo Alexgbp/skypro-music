@@ -131,7 +131,7 @@ export const PlayerBtnRepeatSvg = styled.svg`
 width: 18px;
 height: 12px;
 fill: transparent;
-stroke: #696969;
+stroke: ${(props) => props.$click ? "white" : "#696969"}
 `
 export const PlayerBtnShuffle = styled.div`
 padding: 5px;
