@@ -2,6 +2,7 @@ import React, {useRef, useState } from 'react';
 import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { NotRealized } from '../notrealized/notRealized';
+import { ProgressBar } from '../progresBar/progressBar';
 
 
 
@@ -40,8 +41,9 @@ function AudioPlayer({loader, currentTrack}) {
     <S.AudioComponent loop={isLoop} autoPlay src={currentTrack.track_file} controls ref={buttonRef}></S.AudioComponent>
     <S.Bar $visible={currentTrack}>
       <S.BarContent>
-        <S.BarPlayerProgress>
-          <S.BarPlayerBlock>
+        {/* <S.BarPlayerProgress> */}
+        <ProgressBar>
+        <S.BarPlayerBlock>
             <S.BarPlayer>
               <S.BarPlayerControl>
                 <S.PlayerBtnPrev onClick={NotRealized}>
@@ -123,7 +125,8 @@ function AudioPlayer({loader, currentTrack}) {
               </S.VolumeContent>
             </S.BarVolumeBlock>
           </S.BarPlayerBlock>
-        </S.BarPlayerProgress>
+        </ProgressBar>
+        {/* </S.BarPlayerProgress> */}
       </S.BarContent>
     </S.Bar>
     
