@@ -15,6 +15,7 @@ export const StyledProgressInput = styled.input`
   background: transparent;
   position: relative;
   overflow: hidden;
+  z-index: 3;
 
   &::-webkit-slider-runnable-track {
     position: relative;
