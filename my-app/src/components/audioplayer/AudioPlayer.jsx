@@ -11,6 +11,7 @@ function AudioPlayer({loader, currentTrack}) {
  
   const [isPlaying, setPlaying] = useState(true)
   const [isLoop, setIsLoop] = useState(false)
+  const [timeProgress, setTimeProgress] = useState(false)
   
 
   const toggleLoop = () => {
@@ -38,10 +39,10 @@ function AudioPlayer({loader, currentTrack}) {
   return (
     
     <>
-    <S.AudioComponent loop={isLoop} autoPlay src={currentTrack.track_file} controls ref={buttonRef}></S.AudioComponent>
+    <S.AudioComponent onTimeUpdate={() => setTimeProgress(buttonRef.current.currentTime)} loop={isLoop} autoPlay src={currentTrack.track_file} controls ref={buttonRef}></S.AudioComponent>
     <S.Bar $visible={currentTrack}>
       <S.BarContent>
-      <ProgressBar></ProgressBar>
+      <ProgressBar timeProgress={timeProgress} buttonRef={buttonRef}></ProgressBar>
           <S.BarPlayerBlock>
             <S.BarPlayer>
               <S.BarPlayerControl>
