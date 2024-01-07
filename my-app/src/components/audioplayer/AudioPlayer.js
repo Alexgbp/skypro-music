@@ -36,6 +36,7 @@ flex-direction: row;
 -webkit-box-pack: justify;
 -ms-flex-pack: justify;
 justify-content: space-between;
+width: 100%
 `
 export const BarPlayer = styled.div`
 display: -webkit-box;
@@ -87,11 +88,18 @@ padding: 5px;
     -ms-flex-align: center;
     align-items: center;
 `
-export const PlayerBtnPlaySvg = styled.svg`
+export const PlayBtnPlaySvg = styled.svg`
 width: 22px;
     height: 20px;
     fill: #d9d9d9;
 `
+
+export const StopBtnPlaySvg = styled.svg`
+width: 22px;
+    height: 20px;
+    fill: #d9d9d9;
+`
+
 export const PlayerBtnNext = styled.div`
 padding: 5px;
     display: -webkit-box;
@@ -123,7 +131,7 @@ export const PlayerBtnRepeatSvg = styled.svg`
 width: 18px;
 height: 12px;
 fill: transparent;
-stroke: #696969;
+stroke: ${(props) => props.$click ? "white" : "#696969"}
 `
 export const PlayerBtnShuffle = styled.div`
 padding: 5px;
@@ -218,7 +226,7 @@ font-style: normal;
 `
 
 export const TrackPlayLikeDis = styled.div`
-display: -webkit-box;
+    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
@@ -228,7 +236,7 @@ display: -webkit-box;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    margin-left: 26%;
+    margin-left: 26px;
 `
 export const TrackPlayLike = styled.div`
 padding: 5px;
@@ -283,6 +291,9 @@ width: 109px;
 `
 export const VolumeProgressLine = styled.input`
 width: 109px;
+`
+export const AudioComponent = styled.audio`
+visibility: hidden
 `
   
  

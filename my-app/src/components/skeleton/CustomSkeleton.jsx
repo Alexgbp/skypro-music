@@ -10,16 +10,16 @@ export function CustomSkeleton() {
         <S.PlayListTrack>
           <S.TrackTitle>
             <S.TrackTitleImg>
-              <Skeleton count={10} width={50} height={45} />
+              <Skeleton count={8} width={50} height={45} />
             </S.TrackTitleImg>
 
-            <Skeleton count={10} width={320} height={45} />
+            <Skeleton count={8} width={320} height={45} />
           </S.TrackTitle>
           <S.TrackAuthor>
-            <Skeleton count={10} width={300} height={45} />
+            <Skeleton count={8} width={300} height={45} />
           </S.TrackAuthor>
           <S.TrackAlbum>
-            <Skeleton count={10} width={300} height={45} />
+            <Skeleton count={8} width={300} height={45} />
           </S.TrackAlbum>
 
           <S.TrackTimeSvg alt="time">

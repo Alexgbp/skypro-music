@@ -1,40 +1,72 @@
-import React from 'react';
+import React, {useRef, useState } from 'react';
 import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { NotRealized } from '../notrealized/notRealized';
+import { ProgressBar } from '../progresBar/progressBar';
+
 
 
 function AudioPlayer({loader, currentTrack}) {
+ const buttonRef = useRef(false)
  
+  const [isPlaying, setPlaying] = useState(true)
+  const [isLoop, setIsLoop] = useState(false)
+  const [timeProgress, setTimeProgress] = useState(false)
+  
+
+  const toggleLoop = () => {
+    console.log(buttonRef.current);
+    buttonRef.current.loop
+    setIsLoop(!isLoop)
+  }
+
+
+
+  const togglePlay = () => {
+    buttonRef.current.play()
+    setPlaying(true)
+  }
+
+  const toggleStop = () => {
+    console.log(buttonRef.current.currentTime);
+    console.log(buttonRef.current.duration);
+    buttonRef.current.pause()
+    setPlaying(false)
+  }
+
+
 
   return (
+    
+    <>
+    <S.AudioComponent onTimeUpdate={() => setTimeProgress(buttonRef.current.currentTime)} loop={isLoop} autoPlay src={currentTrack.track_file} controls ref={buttonRef}></S.AudioComponent>
     <S.Bar $visible={currentTrack}>
       <S.BarContent>
-        <S.BarPlayerProgress>
+      <ProgressBar timeProgress={timeProgress} buttonRef={buttonRef}></ProgressBar>
           <S.BarPlayerBlock>
             <S.BarPlayer>
               <S.BarPlayerControl>
-                <S.PlayerBtnPrev>
+                <S.PlayerBtnPrev onClick={NotRealized}>
                   <S.PlayerBtnPrevSvg alt="prev">
                     <use xlinkHref="img/icon/sprite.svg#icon-prev" />
                   </S.PlayerBtnPrevSvg>
                 </S.PlayerBtnPrev>
-                <S.PlayerBtnPlay>
-                {/* was class _btn */}
-                  <S.PlayerBtnPlaySvg alt="play">
+                <S.PlayerBtnPlay onClick={isPlaying ? toggleStop : togglePlay}>
+                  {isPlaying ?  <S.StopBtnPlaySvg alt="stop"> <use xlinkHref="img/icon/sprite.svg#icon-pause" ></use></S.StopBtnPlaySvg> : <S.PlayBtnPlaySvg alt="play">
                     <use xlinkHref="img/icon/sprite.svg#icon-play" />
-                  </S.PlayerBtnPlaySvg>
+                  </S.PlayBtnPlaySvg>}
                 </S.PlayerBtnPlay>
-                <S.PlayerBtnNext>
+                <S.PlayerBtnNext onClick={NotRealized}>
                   <S.PlayerBtnNextSvg alt="next">
                     <use xlinkHref="img/icon/sprite.svg#icon-next" />
                   </S.PlayerBtnNextSvg>
                 </S.PlayerBtnNext>
-                <S.PlayerBtnRepeat>
-                  <S.PlayerBtnRepeatSvg alt="repeat">
+                <S.PlayerBtnRepeat onClick={toggleLoop}>
+                  <S.PlayerBtnRepeatSvg $click={isLoop} alt="repeat">
                     <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                   </S.PlayerBtnRepeatSvg>
                 </S.PlayerBtnRepeat>
-                <S.PlayerBtnShuffle>
+                <S.PlayerBtnShuffle onClick={NotRealized}>
                   <S.PlayerBtnShuffleSvg alt="shuffle">
                     <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
                   </S.PlayerBtnShuffleSvg>
@@ -93,10 +125,12 @@ function AudioPlayer({loader, currentTrack}) {
               </S.VolumeContent>
             </S.BarVolumeBlock>
           </S.BarPlayerBlock>
-        </S.BarPlayerProgress>
       </S.BarContent>
     </S.Bar>
+    
+    </>
   );
 }
+
 
 export default AudioPlayer;
