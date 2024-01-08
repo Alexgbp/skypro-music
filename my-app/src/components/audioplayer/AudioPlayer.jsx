@@ -3,6 +3,7 @@ import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { NotRealized } from '../notrealized/notRealized';
 import { ProgressBar } from '../progresBar/progressBar';
+import { VolumeComponent } from '../volumeComponents/volumeComponent';
 
 
 
@@ -15,7 +16,6 @@ function AudioPlayer({loader, currentTrack}) {
   
 
   const toggleLoop = () => {
-    console.log(buttonRef.current);
     buttonRef.current.loop
     setIsLoop(!isLoop)
   }
@@ -28,8 +28,6 @@ function AudioPlayer({loader, currentTrack}) {
   }
 
   const toggleStop = () => {
-    console.log(buttonRef.current.currentTime);
-    console.log(buttonRef.current.duration);
     buttonRef.current.pause()
     setPlaying(false)
   }
@@ -108,22 +106,7 @@ function AudioPlayer({loader, currentTrack}) {
                 </S.TrackPlayLikeDis>
               </S.PlayerTrackPlay>
             </S.BarPlayer>
-            <S.BarVolumeBlock>
-              <S.VolumeContent>
-                <S.VolumeImg>
-                  <S.VolumeSvg alt="volume">
-                    <use xlinkHref="img/icon/sprite.svg#icon-volume" />
-                  </S.VolumeSvg>
-                </S.VolumeImg>
-                <S.VolumeProgress>
-                  {/* _btn */}
-                  <S.VolumeProgressLine
-                    type="range"
-                    name="range"
-                  />
-                </S.VolumeProgress>
-              </S.VolumeContent>
-            </S.BarVolumeBlock>
+            <VolumeComponent />
           </S.BarPlayerBlock>
       </S.BarContent>
     </S.Bar>
