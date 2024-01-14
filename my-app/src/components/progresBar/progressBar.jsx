@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect} from "react";
 import { useState } from "react";
 import {StyledProgressInput} from './progresBar.style.js'
 
 export  function ProgressBar({timeProgress, buttonRef}) {
   const [duration, setDuration] = useState(null);
-  const progressRef = useRef(null)
   
   useEffect(() =>{
 
@@ -13,14 +12,13 @@ export  function ProgressBar({timeProgress, buttonRef}) {
     }, 1000);
   }, [setDuration, buttonRef])
 
-  const changeTiming =()=> {
-    buttonRef.current.currentTime = progressRef.current.value
+  const changeTiming =(e)=> {
+    buttonRef.current.currentTime = e.target.value
  }
 
   return (
     
     <StyledProgressInput
-    ref={progressRef}
       type="range"
       min={0}
       max={duration}
