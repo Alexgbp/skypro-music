@@ -1,15 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import * as S from "./volume.style.js"
 import VolumeProgressLine from "../VolumeProgressLine/VolumeProgressLine.jsx";
 
-export function VolumeComponent(){
-  const refVolume = useRef(null)
-  const [volume, setVolume] = useState(0.69)
-  // const [duration, setDuration] = useState(0)
-  // const [currenTime, setCurrenTime] = useState(0)
+export function VolumeComponent({buttonRef}){
+  const [volume, setVolume] = useState(null)
 
   const changeVolume = (e) => {
-   refVolume.current.volume = e.target.value
+   buttonRef.current.volume = e.target.value
    setVolume(e.target.value)
   }
     return(
@@ -21,7 +18,7 @@ export function VolumeComponent(){
                   </S.VolumeSvg>
                 </S.VolumeImg>
                 <S.VolumeProgress>
-                  <VolumeProgressLine ref={refVolume}  duration={1} currentTime={volume}  onChange={changeVolume} />
+                  <VolumeProgressLine  duration={1} volume={volume}  onChange={changeVolume} />
                 </S.VolumeProgress>
               </S.VolumeContent>
             </S.BarVolumeBlock>

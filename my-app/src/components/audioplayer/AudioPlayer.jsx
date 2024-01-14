@@ -106,7 +106,7 @@ function AudioPlayer({loader, currentTrack}) {
                 </S.TrackPlayLikeDis>
               </S.PlayerTrackPlay>
             </S.BarPlayer>
-            <VolumeComponent />
+            <VolumeComponent  buttonRef={buttonRef}/>
           </S.BarPlayerBlock>
       </S.BarContent>
     </S.Bar>
