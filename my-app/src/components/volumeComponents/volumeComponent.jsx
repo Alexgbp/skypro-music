@@ -7,7 +7,7 @@ export function VolumeComponent({buttonRef}){
 
   const changeVolume = (e) => {
    buttonRef.current.volume = e.target.value
-   setVolume(e.target.value)
+   setVolume(buttonRef.current.volume)
   }
     return(
         <S.BarVolumeBlock>
