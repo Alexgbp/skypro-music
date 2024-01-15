@@ -1,4 +1,4 @@
-import React, {useRef, useState } from 'react';
+import React, {useEffect, useRef, useState } from 'react';
 import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { NotRealized } from '../notrealized/notRealized';
@@ -12,7 +12,8 @@ function AudioPlayer({loader, currentTrack}) {
  
   const [isPlaying, setPlaying] = useState(true)
   const [isLoop, setIsLoop] = useState(false)
-  const [timeProgress, setTimeProgress] = useState(false)
+  const [timeProgress, setTimeProgress] = useState(0)
+  const [duration, setDuration] = useState(0);
   
 
   const toggleLoop = () => {
@@ -32,15 +33,22 @@ function AudioPlayer({loader, currentTrack}) {
     setPlaying(false)
   }
 
-
+  useEffect(() =>{
+    setDuration(buttonRef.current.duration)
+  })
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  };
 
   return (
-    
     <>
     <S.AudioComponent onTimeUpdate={() => setTimeProgress(buttonRef.current.currentTime)} loop={isLoop} autoPlay src={currentTrack.track_file} controls ref={buttonRef}></S.AudioComponent>
+    <S.TimeComponent>{formatTime(timeProgress)} / {formatTime(duration)}</S.TimeComponent>
     <S.Bar $visible={currentTrack}>
       <S.BarContent>
-      <ProgressBar timeProgress={timeProgress} buttonRef={buttonRef}></ProgressBar>
+      <ProgressBar timeProgress={timeProgress} buttonRef={buttonRef} duration={duration}></ProgressBar>
           <S.BarPlayerBlock>
             <S.BarPlayer>
               <S.BarPlayerControl>
@@ -70,7 +78,6 @@ function AudioPlayer({loader, currentTrack}) {
                   </S.PlayerBtnShuffleSvg>
                 </S.PlayerBtnShuffle>
               </S.BarPlayerControl>
-
               <S.PlayerTrackPlay>
                 <S.TrackPlayConatin>
                  <SkeletonTheme baseColor='grey'>
@@ -91,7 +98,6 @@ function AudioPlayer({loader, currentTrack}) {
                     </S.TrackPlayAlbumLink> : <Skeleton width={50} />}
                   </S.TrackPlayAlbum>
                 </S.TrackPlayConatin>
-
                 <S.TrackPlayLikeDis>
                   <S.TrackPlayLike>
                     <S.TrackPlayLikeSvg alt="like">

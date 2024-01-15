@@ -23,7 +23,7 @@ height: 5px;
 background: #2e2e2e;
 `
 export const BarPlayerBlock = styled.div`
-height: 73px;
+height: 80px;
 display: -webkit-box;
 display: -ms-flexbox;
 display: flex;
@@ -255,7 +255,12 @@ padding: 5px;
 export const AudioComponent = styled.audio`
 visibility: hidden
 `
- 
+export const TimeComponent = styled.div`
+position: absolute;
+right: 20px;
+bottom: 113px;
+color: rgb(237 233 233 / 50%);
+`
   
 
   
