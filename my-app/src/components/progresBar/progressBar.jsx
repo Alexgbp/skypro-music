@@ -2,9 +2,6 @@ import React from "react";
 import {StyledProgressInput} from './progresBar.style.js'
 
 export  function ProgressBar({timeProgress, buttonRef, duration}) {
-  
-  
- 
 
   const changeTiming =(e)=> {
     buttonRef.current.currentTime = e.target.value
