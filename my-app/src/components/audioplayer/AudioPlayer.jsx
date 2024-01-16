@@ -33,9 +33,9 @@ function AudioPlayer({loader, currentTrack}) {
     setPlaying(false)
   }
 
-  useEffect(() =>{
-    setDuration(buttonRef.current.duration)
-  })
+  useEffect(() => {
+    buttonRef.current.duration ? setDuration(buttonRef.current.duration) : setDuration(0);
+  });
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
