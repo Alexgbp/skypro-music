@@ -23,7 +23,7 @@ height: 5px;
 background: #2e2e2e;
 `
 export const BarPlayerBlock = styled.div`
-height: 73px;
+height: 80px;
 display: -webkit-box;
 display: -ms-flexbox;
 display: flex;
@@ -36,6 +36,7 @@ flex-direction: row;
 -webkit-box-pack: justify;
 -ms-flex-pack: justify;
 justify-content: space-between;
+width: 100%
 `
 export const BarPlayer = styled.div`
 display: -webkit-box;
@@ -87,11 +88,18 @@ padding: 5px;
     -ms-flex-align: center;
     align-items: center;
 `
-export const PlayerBtnPlaySvg = styled.svg`
+export const PlayBtnPlaySvg = styled.svg`
 width: 22px;
     height: 20px;
     fill: #d9d9d9;
 `
+
+export const StopBtnPlaySvg = styled.svg`
+width: 22px;
+    height: 20px;
+    fill: #d9d9d9;
+`
+
 export const PlayerBtnNext = styled.div`
 padding: 5px;
     display: -webkit-box;
@@ -123,7 +131,7 @@ export const PlayerBtnRepeatSvg = styled.svg`
 width: 18px;
 height: 12px;
 fill: transparent;
-stroke: #696969;
+stroke: ${(props) => props.$click ? "white" : "#696969"}
 `
 export const PlayerBtnShuffle = styled.div`
 padding: 5px;
@@ -218,7 +226,7 @@ font-style: normal;
 `
 
 export const TrackPlayLikeDis = styled.div`
-display: -webkit-box;
+    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
@@ -228,7 +236,7 @@ display: -webkit-box;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    margin-left: 26%;
+    margin-left: 26px;
 `
 export const TrackPlayLike = styled.div`
 padding: 5px;
@@ -243,49 +251,16 @@ export const TrackPlayDisLike = styled.div`
 margin-left: 28.5px;
 padding: 5px;
 `
-export const BarVolumeBlock = styled.div`
-width: auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 0 92px 0 0;
+
+export const AudioComponent = styled.audio`
+visibility: hidden
 `
-export const VolumeContent = styled.div`
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-orient: horizontal;
--webkit-box-direction: normal;
--ms-flex-direction: row;
-flex-direction: row;
--webkit-box-align: center;
--ms-flex-align: center;
-align-items: center;
--webkit-box-pack: end;
--ms-flex-pack: end;
-justify-content: end;
+export const TimeComponent = styled.div`
+position: absolute;
+right: 20px;
+bottom: 113px;
+color: rgb(237 233 233 / 50%);
 `
-export const VolumeImg = styled.div`
-width: 13px;
-height: 18px;
-margin-right: 17px;
-`
-export const VolumeSvg = styled.svg`
-width: 13px;
-    height: 18px;
-    fill: transparent;
-`
-export const VolumeProgress  = styled.div`
-width: 109px;
-`
-export const VolumeProgressLine = styled.input`
-width: 109px;
-`
-  
- 
   
 
   

@@ -38,7 +38,7 @@ export const MainSideBar = styled.div`
   `;
   export const SideBarBlock = styled.div`
     height: 100%;
-    padding: 240px 0 0 0;
+    padding: 190px 0 0 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
