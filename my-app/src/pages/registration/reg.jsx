@@ -6,7 +6,7 @@ import { registartionUser } from "../../api/api";
 
 export default function Registration({ isLoginMode = false }) {
   const [error, setError] = useState(null);
-  const[name, setName] = useState("")
+  const[userName, setUserName] = useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -16,9 +16,9 @@ export default function Registration({ isLoginMode = false }) {
     setError("Неизвестная ошибка входа");
   };
 
-  const handleRegister = async ({email, name, password}) => {
-    alert(`Выполняется регистрация: ${email} ${name} ${password}`);
-    registartionUser()
+  const handleRegister = async ({email, userName, password}) => {
+    alert(`Выполняется регистрация: ${email} ${userName} ${password}`);
+    registartionUser({email, userName, password})
     .then((data) => {
       console.log(data);
     })
@@ -77,9 +77,9 @@ export default function Registration({ isLoginMode = false }) {
                 type="text"
                 name="name"
                 placeholder="Имя"
-                value={name}
+                value={userName}
                 onChange={(event) => {
-                  setName(event.target.value);
+                  setUserName(event.target.value);
                 }}
               />
               <S.ModalInput
@@ -112,7 +112,7 @@ export default function Registration({ isLoginMode = false }) {
             </S.Inputs>
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
-              <S.PrimaryButton onClick={handleRegister}>
+              <S.PrimaryButton onClick={() => handleRegister({email, password, userName})}>
                 Зарегистрироваться
               </S.PrimaryButton>
             </S.Buttons>
