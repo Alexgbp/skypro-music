@@ -18,7 +18,7 @@ export default function Registration({ isLoginMode = false }) {
 
   const handleRegister = async ({email, userName, password}) => {
     alert(`Выполняется регистрация: ${email} ${userName} ${password}`);
-    registartionUser({email, userName, password})
+     await registartionUser(email, userName, password)
     .then((data) => {
       console.log(data);
     })
