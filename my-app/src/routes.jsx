@@ -13,6 +13,7 @@ export function AppRoutes() {
   const navigate = useNavigate()
 
   const [user, setUser] = useState(localStorage.getItem("user"));
+  
    const signIn = (e) => {
     e.preventDefault()
     localStorage.setItem("user", JSON.stringify({login: 123}))
@@ -32,7 +33,7 @@ export function AppRoutes() {
         <Route path="/category/:id" element={<Category />} />
       </Route>
       <Route path="/login" element={<LoginPage onClick={signIn} />} />
-      <Route path="/registration" element={<Registration />} />
+      <Route path="/register" element={<Registration />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

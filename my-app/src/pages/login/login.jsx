@@ -27,7 +27,7 @@ function LoginPage({onClick}) {
               <S.ModalBtnEnterLink onClick={onClick}>Войти</S.ModalBtnEnterLink>
             </S.ModalBtnEnter>
             <S.ModalBtnSignUp>
-              <Link to='/registration'>Зарегистрироваться</Link>
+              <Link to='/register'>Зарегистрироваться</Link>
             </S.ModalBtnSignUp>
           </S.ModalFormLogin>
         </S.ModalBlock>

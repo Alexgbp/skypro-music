@@ -9,3 +9,20 @@ export  async function getAllTracks() {
   const response =  await fetchTracks.json();
   return response;
 }
+
+export async function registartionUser() {
+
+  const regUser =  await fetch('https://skypro-music-api.skyeng.tech/user/signup/', {
+    method: 'POST',
+    body: JSON.stringify({
+      email: 'gleb@fokin.ru',
+      password: 'Aa12345!!',
+      username: 'gleb@fokin.ru',
+    }),
+    headers: {
+      'content-type': 'application/json',
+    },
+  })
+  const response = await regUser.json();
+  return response
+}
