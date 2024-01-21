@@ -4,7 +4,11 @@ import * as S from "./registration";
 import { useEffect, useState } from "react";
 import { registartionUser } from "../../api/api";
 
-export default function Registration({ isLoginMode = false }) {
+export default function Registration() {
+  const isLoginMode = false
+  const ChangeMode = () => !isLoginMode;
+
+  const[isDisabled, setDisabled] = useState(false)
   const [error, setError] = useState(null);
   const[userName, setUserName] = useState("")
   const [email, setEmail] = useState("");
@@ -12,18 +16,26 @@ export default function Registration({ isLoginMode = false }) {
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const handleLogin = async ({ email, password }) => {
+    setDisabled(true)
     alert(`Выполняется вход: ${email} ${password}`);
     setError("Неизвестная ошибка входа");
+    setDisabled(false)
   };
 
   const handleRegister = async ({email, userName, password}) => {
+    setDisabled(true) // блокирует кнопку после клика //
     alert(`Выполняется регистрация: ${email} ${userName} ${password}`);
      await registartionUser(email, userName, password)
     .then((data) => {
       console.log(data);
+      setDisabled(false)
     })
-    setError("Неизвестная ошибка регистрации");
+    .catch((error) => {
+      setError(error.message);
+    })
   };
+
+  
 
   // Сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы
   useEffect(() => {
@@ -35,7 +47,7 @@ export default function Registration({ isLoginMode = false }) {
       <S.ModalForm>
         <Link to="/login">
           <S.ModalLogo>
-            <S.ModalLogoImage src="/img/logo_modal.png" alt="logo" />
+            <S.ModalLogoImage onClick={() => ChangeMode()} src="/img/logo_modal.png" alt="logo" />
           </S.ModalLogo>
         </Link>
         {isLoginMode ? (
@@ -62,7 +74,7 @@ export default function Registration({ isLoginMode = false }) {
             </S.Inputs>
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
-              <S.PrimaryButton onClick={() => handleLogin({ email, password })}>
+              <S.PrimaryButton disabled={isDisabled} onClick={() => handleLogin({ email, password })}>
                 Войти
               </S.PrimaryButton>
               <Link to="/register">
@@ -112,7 +124,7 @@ export default function Registration({ isLoginMode = false }) {
             </S.Inputs>
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
-              <S.PrimaryButton onClick={() => handleRegister({email, password, userName})}>
+              <S.PrimaryButton disabled={isDisabled} onClick={() => handleRegister({email, password, userName})}>
                 Зарегистрироваться
               </S.PrimaryButton>
             </S.Buttons>
