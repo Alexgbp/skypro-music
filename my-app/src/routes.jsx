@@ -10,6 +10,7 @@ import { MyPlayList } from "./pages/my-playlist/myPlaylist";
 
 
 export function AppRoutes() {
+  console.log("Approutes is render");
   const navigate = useNavigate()
 
   const [user, setUser] = useState(localStorage.getItem("user"));
