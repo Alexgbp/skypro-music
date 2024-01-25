@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import * as S from "./registration";
 import { useEffect, useState } from "react";
-import { registartionUser } from "../../api/api";
+import { regUser } from "../../api/api";
 
 export default function Registration() {
   const isLoginMode = false
@@ -24,8 +24,8 @@ export default function Registration() {
 
   const handleRegister = async ({email, userName, password}) => {
     setDisabled(true) // блокирует кнопку после клика //
-    alert(`Выполняется регистрация: ${email} ${userName} ${password}`);
-     await registartionUser(email, userName, password)
+    alert(`Выполняется регистрация: ${userName} ${email} ${password}`);
+     await regUser(email, userName, password)
     .then((data) => {
       console.log(data);
       setDisabled(false)
