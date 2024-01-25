@@ -17,12 +17,44 @@ export async function regUser(email, password, userName) {
     body: JSON.stringify({
       email,
       password,
-      userName,
+      username: userName,
     }),
     headers: {
       'content-type': 'application/json',
     },
   })
   const response = await regUser.json();
+  return response
+}
+
+export async function logUser(email, password) {
+
+  const logingUser =  await fetch('https://skypro-music-api.skyeng.tech/user/login/', {
+    method: 'POST',
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+    headers: {
+      'content-type': 'application/json',
+    },
+  })
+  const response = await logingUser.json();
+  return response
+}
+
+export async function tokenUser(email, password) {
+
+  const tokenUser =  await fetch('https://skypro-music-api.skyeng.tech/user/token/', {
+    method: 'POST',
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+    headers: {
+      'content-type': 'application/json',
+    },
+  })
+  const response = await tokenUser.json();
   return response
 }

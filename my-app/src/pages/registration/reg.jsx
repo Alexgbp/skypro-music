@@ -1,13 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as S from "./registration";
 import { useEffect, useState } from "react";
-import { regUser } from "../../api/api";
+import { logUser, regUser, tokenUser } from "../../api/api";
 
-export default function Registration() {
-  const isLoginMode = false
-  const ChangeMode = () => !isLoginMode;
+export default function Registration({isLoginMode}) {
 
+  const navigate = useNavigate();
+  
   const[isDisabled, setDisabled] = useState(false)
   const [error, setError] = useState(null);
   const[userName, setUserName] = useState("")
@@ -15,24 +15,32 @@ export default function Registration() {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const handleLogin = async ({ email, password }) => {
-    setDisabled(true)
-    alert(`Выполняется вход: ${email} ${password}`);
-    setError("Неизвестная ошибка входа");
-    setDisabled(false)
-  };
 
   const handleRegister = async ({email, userName, password}) => {
-    setDisabled(true) // блокирует кнопку после клика //
-    alert(`Выполняется регистрация: ${userName} ${email} ${password}`);
-     await regUser(email, userName, password)
-    .then((data) => {
-      console.log(data);
+    try {
+      setDisabled(true)
+        await regUser(email, userName, password)
+       navigate("/login" , {replace: true})
+    } catch (error) {
+      console.log(error);
+    } finally{
       setDisabled(false)
-    })
-    .catch((error) => {
-      setError(error.message);
-    })
+    }
+  };
+
+  const handleLogin = async ({email, password}) => {
+    try {
+      setDisabled(true)
+      const token = await tokenUser(email, password)
+      console.log(token);
+       const response = await logUser(email, password)
+       localStorage.setItem("user", JSON.stringify(response))
+       navigate("/" , {replace: true})
+    } catch (error) {
+      console.log(error);
+    } finally{
+      setDisabled(false)
+    }
   };
 
   
@@ -47,7 +55,7 @@ export default function Registration() {
       <S.ModalForm>
         <Link to="/login">
           <S.ModalLogo>
-            <S.ModalLogoImage onClick={() => ChangeMode()} src="/img/logo_modal.png" alt="logo" />
+            <S.ModalLogoImage  src="/img/logo_modal.png" alt="logo" />
           </S.ModalLogo>
         </Link>
         {isLoginMode ? (
@@ -96,7 +104,7 @@ export default function Registration() {
               />
               <S.ModalInput
                 type="text"
-                name="login"
+                name="email"
                 placeholder="Почта"
                 value={email}
                 onChange={(event) => {
