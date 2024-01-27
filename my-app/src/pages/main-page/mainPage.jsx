@@ -14,9 +14,8 @@ import * as S5 from '../../components/otherstyles/container.js';
 import * as S6 from '../../components/otherstyles/main.js';
 import * as S7 from '../../pages/main-page/mainPage'
 import { getAllTracks } from "../../api/api.jsx";
-import { Link } from 'react-router-dom';
 
- export function MainPage({onClick, user}) {
+ export function MainPage({onClick}) {
 
   const [loader, setLoader] = useState(false);
   const [data, setDataArray] = useState([]);
@@ -41,17 +40,15 @@ import { Link } from 'react-router-dom';
       <S4.Wrapper>
         <S5.Container>
           <S6.Main>
-            <NavMenu user={user}  onClick={onClick} />
+            <NavMenu  onClick={onClick} />
             <S1.MainCenterBlock>
               <SearchBlock />
               <S2.CenterBlockH2>Треки</S2.CenterBlockH2> 
               {/* если user вышел треки скрыты */}
-              {user ?  <>
               <Filter dataArray={data} />
               {newError  ? <S7.ErrorMessage>{newError}</S7.ErrorMessage> : <TrackList setCurrentTrack={setCurrentTrack} loader={loader}  array={data}/>}
-              </> : <><h2><Link to="/register">Зарегистрируйтесь</Link> что бы просматривать список треков</h2></>}
             </S1.MainCenterBlock>
-            <SideBar loader={loader}  onClick={onClick} />
+            <SideBar  loader={loader}onClick={onClick}/>
           </S6.Main>
             {currentTrack ? <AudioPlayer currentTrack={currentTrack}  loader={loader} /> : null}
           <S3.FooterBlock />

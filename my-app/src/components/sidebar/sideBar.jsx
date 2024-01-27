@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import * as S from "./sideBar"
+import {Context} from "../../routes"
 
 
  export default function SideBar({loader, onClick}) {
+  const user = useContext(Context)
   return (
     <S.MainSideBar>
       <S.SideBarPersonal>
-        <S.SideBarPersonalName>Sergey.Ivanov</S.SideBarPersonalName>
+        <S.SideBarPersonalName>{user.username}</S.SideBarPersonalName>
         <S.SideBarIcon onClick={onClick}>
           <svg alt="logout">
             <use xlinkHref="img/icon/sprite.svg#logout" />

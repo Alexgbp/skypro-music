@@ -2,7 +2,7 @@ import React from 'react';
 const { useState } = React;
 import * as S from './burgerMenu';
 
-function BurgerMenu({user, onClick}) {
+function BurgerMenu({onClick}) {
   const [visible, setVisible] = useState(false);
   const toglleState = () => setVisible(!visible);
 
@@ -26,9 +26,7 @@ function BurgerMenu({user, onClick}) {
             </S.Link>
           </S.MenuItem>
           <S.MenuItem>
-            <S.Link onClick={onClick}>
-             {user ? "Выйти" : "Войти"}
-            </S.Link>
+            <S.Link onClick={onClick}>Выход</S.Link>
           </S.MenuItem>
         </S.MenuList>
       </S.NavMenu>

@@ -1,29 +1,36 @@
-import React from 'react';
-import { Route, Routes} from 'react-router-dom';
+import React, { createContext, useState } from 'react';
+import { Route, Routes, useNavigate} from 'react-router-dom';
 import { MainPage } from './pages/main-page/mainPage.jsx';
-// import  LoginPage  from './pages/login/login';
 import Registration from './pages/registration/reg';
 import { PageNotFound } from './pages/not-found/pageNotFound';
 import { Category } from './pages/category/category';
 import { ProtectedRoutes } from "./components/propected/protectedRoutes";
 import { MyPlayList } from "./pages/my-playlist/myPlaylist";
+export const Context = createContext()
 
 
 export function AppRoutes() {
+  const navigate = useNavigate()
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
-  // const [user, setUser] = useState();
+  const logOutClick = () => {
+    localStorage.removeItem("user")
+    navigate("/login", {replace: true})
+    setUser(null)
+  }
   
   return (
-    <Routes>
-      <Route element={<ProtectedRoutes isRegistred={Boolean()} />}>
+    <Context.Provider value={user}>
+      <Routes>
+      <Route element={<ProtectedRoutes isRegistred={Boolean(user)} />}>
         <Route path="/favorites" element={<MyPlayList />} />
         <Route path="/category/:id" element={<Category />} />
+        <Route path="/" element={<MainPage onClick={logOutClick} />} />
       </Route>
-      <Route path="/" element={<MainPage />} />
-      {/* <Route path="/" element={<MainPage user={user} так было раньше  />} /> */}
       <Route path="/login" element={<Registration  isLoginMode={true} />} />
       <Route path="/register" element={<Registration />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
+    </Context.Provider>
   );
 }

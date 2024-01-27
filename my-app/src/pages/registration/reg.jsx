@@ -4,6 +4,10 @@ import * as S from "./registration";
 import { useEffect, useState } from "react";
 import { logUser, regUser, tokenUser } from "../../api/api";
 
+
+
+// Кнопка не гаснет , со второго раза происходит вход , обработать ошибки от сервекра правильно
+
 export default function Registration({isLoginMode}) {
 
   const navigate = useNavigate();
@@ -16,30 +20,55 @@ export default function Registration({isLoginMode}) {
   const [repeatPassword, setRepeatPassword] = useState("");
 
 
-  const handleRegister = async ({email, userName, password}) => {
+  const handleRegister = async ({ email, userName, password }) => {
+    if (!userName) {
+      setError('Укажите имя');
+      return;
+    }
+    if (!email) {
+      setError('Укажите почту');
+      return;
+    }
+    if (!password) {
+      setError('Укажите пароль');
+      return;
+    }
     try {
-      setDisabled(true)
-        await regUser(email, userName, password)
-       navigate("/login" , {replace: true})
+      setDisabled(true);
+      const response = await regUser(email, userName, password);
+      navigate("/", {replace: true})
+      if(response.status === 401){
+        throw new Error("Неверный ввод")
+      }
     } catch (error) {
+      setError(error.message);
       console.log(error);
-    } finally{
-      setDisabled(false)
+    } finally {
+      setDisabled(false);
     }
   };
 
-  const handleLogin = async ({email, password}) => {
+
+  const handleLogin = async ({ email, password }) => {
+    if (!email) {
+      setError('Укажите почту');
+      return;
+    }
+    if (!password) {
+      setError('Укажите пароль');
+      return;
+    }
     try {
-      setDisabled(true)
-      const token = await tokenUser(email, password)
-      console.log(token);
-       const response = await logUser(email, password)
-       localStorage.setItem("user", JSON.stringify(response))
-       navigate("/" , {replace: true})
+      setDisabled(true);
+      await tokenUser(email, password);
+      const response = await logUser(email, password);
+      localStorage.setItem('user', JSON.stringify(response));
+      navigate('/', { replace: true });
     } catch (error) {
+      setError(error.message);
       console.log(error);
-    } finally{
-      setDisabled(false)
+    } finally {
+      setDisabled(false);
     }
   };
 
@@ -82,8 +111,8 @@ export default function Registration({isLoginMode}) {
             </S.Inputs>
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
-              <S.PrimaryButton disabled={isDisabled} onClick={() => handleLogin({ email, password })}>
-                Войти
+              <S.PrimaryButton disabled={isDisabled} onClick={() => handleLogin({email, password})}>
+               {isDisabled ? "Выполняю вход" : "Вход"}
               </S.PrimaryButton>
               <Link to="/register">
                 <S.SecondaryButton>Зарегистрироваться</S.SecondaryButton>
@@ -133,7 +162,7 @@ export default function Registration({isLoginMode}) {
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
               <S.PrimaryButton disabled={isDisabled} onClick={() => handleRegister({email, password, userName})}>
-                Зарегистрироваться
+                {isDisabled ? "Регистрирую..." : "Регистрация"}
               </S.PrimaryButton>
             </S.Buttons>
           </>
