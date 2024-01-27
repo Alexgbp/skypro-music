@@ -9,7 +9,7 @@ import { Context } from "../../routes";
 //  если тут не использовать контекст а контретно setUser - наш основнйо стейт то при входе стейт не видит изменений и 
 //  происходимт вход только со второго раза 
 //  а если мы используем setUser  и ложим в этот стейт наши даннывые из апи то реакт стразу рендерит то что нужно
-// Кнопка не гаснет 
+// Кнопка не гаснет
 
 export default function Registration({isLoginMode}) {
 
@@ -26,6 +26,7 @@ export default function Registration({isLoginMode}) {
 
 
   const handleRegister = async ({ email, userName, password }) => {
+    console.log(isDisabled);
     if (!userName) {
       setError('Укажите имя');
       return;
@@ -40,7 +41,12 @@ export default function Registration({isLoginMode}) {
     }
     try {
       setDisabled(true);
-      await regUser(email, userName, password);
+       const user = await regUser(email, userName, password);
+      //   точ то ниже этого не было изначально поэтому перенапрвляло на логин все время
+       localStorage.setItem("user", JSON.stringify(user))  
+       //   точ то ниже этого не было изначально поэтому перенапрвляло на логин все время
+       setUser(user)
+      //  нужно дял тогоч то бы отрендерилась главная  странциа поэтому мы user ложим в стейт  
       navigate("/", {replace: true})
     } catch (error) {
       setError(error.message);
@@ -164,7 +170,7 @@ export default function Registration({isLoginMode}) {
             </S.Inputs>
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
-              <S.PrimaryButton disabled={isDisabled} onClick={() => handleRegister({email, password, userName})}>
+              <S.PrimaryButton onClick={() => handleRegister({email, password, userName})} disabled={isDisabled}>
                 {isDisabled ? "Регистрирую..." : "Регистрация"}
               </S.PrimaryButton>
             </S.Buttons>
