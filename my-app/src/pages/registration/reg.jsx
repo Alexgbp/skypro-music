@@ -182,6 +182,9 @@ export default function Registration({isLoginMode}) {
               <S.PrimaryButton onClick={() => handleRegister({email, password, userName})} disabled={isDisabled}>
                 {isDisabled ? "Регистрирую..." : "Регистрация"}
               </S.PrimaryButton>
+              <Link to="/login">
+              <S.SecondaryButton>Войти</S.SecondaryButton>
+              </Link>
             </S.Buttons>
           </>
         )}
