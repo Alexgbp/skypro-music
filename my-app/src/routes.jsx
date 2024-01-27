@@ -20,7 +20,7 @@ export function AppRoutes() {
   }
   
   return (
-    <Context.Provider value={user}>
+    <Context.Provider value={{user, setUser}}>
       <Routes>
       <Route element={<ProtectedRoutes isRegistred={Boolean(user)} />}>
         <Route path="/favorites" element={<MyPlayList />} />

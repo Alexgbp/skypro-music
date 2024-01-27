@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as S from "./registration";
 import { useEffect, useState } from "react";
 import { logUser, regUser, tokenUser } from "../../api/api";
+import { Context } from "../../routes";
 
 
 
 // Кнопка не гаснет , со второго раза происходит вход , обработать ошибки от сервекра правильно
 
 export default function Registration({isLoginMode}) {
+
+  const {setUser} = useContext(Context)
 
   const navigate = useNavigate();
   
@@ -35,11 +38,8 @@ export default function Registration({isLoginMode}) {
     }
     try {
       setDisabled(true);
-      const response = await regUser(email, userName, password);
+      await regUser(email, userName, password);
       navigate("/", {replace: true})
-      if(response.status === 401){
-        throw new Error("Неверный ввод")
-      }
     } catch (error) {
       setError(error.message);
       console.log(error);
@@ -60,9 +60,10 @@ export default function Registration({isLoginMode}) {
     }
     try {
       setDisabled(true);
-      await tokenUser(email, password);
-      const response = await logUser(email, password);
-      localStorage.setItem('user', JSON.stringify(response));
+      await tokenUser(email, password)
+      const user = await logUser(email, password);
+      localStorage.setItem('user', JSON.stringify(user));
+      setUser(user)
       navigate('/', { replace: true });
     } catch (error) {
       setError(error.message);

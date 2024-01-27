@@ -6,7 +6,7 @@ import {Context} from "../../routes"
 
 
  export default function SideBar({loader, onClick}) {
-  const user = useContext(Context)
+  const {user} = useContext(Context)
   return (
     <S.MainSideBar>
       <S.SideBarPersonal>
