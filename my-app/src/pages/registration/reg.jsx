@@ -6,8 +6,10 @@ import { logUser, regUser, tokenUser } from "../../api/api";
 import { Context } from "../../routes";
 
 
-
-// Кнопка не гаснет , со второго раза происходит вход , обработать ошибки от сервекра правильно
+//  если тут не использовать контекст а контретно setUser - наш основнйо стейт то при входе стейт не видит изменений и 
+//  происходимт вход только со второго раза 
+//  а если мы используем setUser  и ложим в этот стейт наши даннывые из апи то реакт стразу рендерит то что нужно
+// Кнопка не гаснет 
 
 export default function Registration({isLoginMode}) {
 
@@ -61,9 +63,9 @@ export default function Registration({isLoginMode}) {
     try {
       setDisabled(true);
       await tokenUser(email, password)
-      const user = await logUser(email, password);
-      localStorage.setItem('user', JSON.stringify(user));
-      setUser(user)
+      const response = await logUser(email, password);
+      localStorage.setItem('user', JSON.stringify(response));
+      setUser(response)
       navigate('/', { replace: true });
     } catch (error) {
       setError(error.message);
