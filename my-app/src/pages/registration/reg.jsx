@@ -39,6 +39,15 @@ export default function Registration({isLoginMode}) {
       setError('Укажите пароль');
       return;
     }
+    if (password !== repeatPassword) {
+      setError('Пароли не совпадают');
+      return;
+    }
+    if (password.length < 6) {
+      setError('Пароль короткий');
+      console.log(password.length);
+      return;
+    }
     try {
       setDisabled(true);
        const user = await regUser(email, userName, password);
