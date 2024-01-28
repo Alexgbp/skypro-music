@@ -6,11 +6,6 @@ import { logUser, regUser, tokenUser } from "../../api/api";
 import { Context } from "../../routes";
 
 
-//  если тут не использовать контекст а контретно setUser - наш основнйо стейт то при входе стейт не видит изменений и 
-//  происходимт вход только со второго раза 
-//  а если мы используем setUser  и ложим в этот стейт наши даннывые из апи то реакт стразу рендерит то что нужно
-// Кнопка не гаснет
-
 export default function Registration({isLoginMode}) {
 
   const {setUser} = useContext(Context)
@@ -51,11 +46,8 @@ export default function Registration({isLoginMode}) {
     try {
       setDisabled(true);
        const user = await regUser(email, userName, password);
-      //   точ то ниже этого не было изначально поэтому перенапрвляло на логин все время
        localStorage.setItem("user", JSON.stringify(user))  
-       //   точ то ниже этого не было изначально поэтому перенапрвляло на логин все время
        setUser(user)
-      //  нужно дял тогоч то бы отрендерилась главная  странциа поэтому мы user ложим в стейт  
       navigate("/", {replace: true})
     } catch (error) {
       setError(error.message);

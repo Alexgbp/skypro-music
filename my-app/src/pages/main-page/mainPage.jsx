@@ -44,7 +44,6 @@ import { getAllTracks } from "../../api/api.jsx";
             <S1.MainCenterBlock>
               <SearchBlock />
               <S2.CenterBlockH2>Треки</S2.CenterBlockH2> 
-              {/* если user вышел треки скрыты */}
               <Filter dataArray={data} />
               {newError  ? <S7.ErrorMessage>{newError}</S7.ErrorMessage> : <TrackList setCurrentTrack={setCurrentTrack} loader={loader}  array={data}/>}
             </S1.MainCenterBlock>
