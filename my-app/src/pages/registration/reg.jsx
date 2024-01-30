@@ -50,8 +50,8 @@ export default function Registration({isLoginMode}) {
       setUser(user);
       navigate('/', { replace: true });
     } catch (error) {
-        setError(error.message);
-        console.log(error.message);
+      setError(error.message);
+      console.log(error.message);
     } finally {
       setDisabled(false);
     }
@@ -71,9 +71,9 @@ export default function Registration({isLoginMode}) {
       setDisabled(true);
       await tokenUser(email, password)
       const response = await logUser(email, password);
-        localStorage.setItem('user', JSON.stringify(response));
-        setUser(response)
-        navigate('/', { replace: true });
+      localStorage.setItem('user', JSON.stringify(response));
+      setUser(response)
+      navigate('/', { replace: true });
     } catch (error) {
       setError(error.message);
       console.log(error);
