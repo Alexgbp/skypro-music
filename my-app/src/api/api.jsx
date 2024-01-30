@@ -23,8 +23,12 @@ export async function regUser(email, password, userName) {
       'content-type': 'application/json',
     },
   })
-  const response = await regUser.json();
-  return response
+  if(regUser.status === 400){
+    throw new Error("Такой пользователь уже существует")
+  }else{
+    const response = await regUser.json();
+    return response
+  }
 }
 
 export async function logUser(email, password) {
@@ -39,8 +43,12 @@ export async function logUser(email, password) {
       'content-type': 'application/json',
     },
   })
-  const response = await logingUser.json();
-  return response
+  if(logingUser.status === 401){
+    throw new Error("Пользователь с таким email или паролем не найден")
+  }else{
+    const response = await logingUser.json();
+    return response
+  }
 }
 
 export async function tokenUser(email, password) {
