@@ -14,14 +14,11 @@ function AudioPlayer({loader, currentTrack}) {
   const [isLoop, setIsLoop] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0)
   const [duration, setDuration] = useState(0);
-  
 
   const toggleLoop = () => {
     buttonRef.current.loop
     setIsLoop(!isLoop)
   }
-
-
 
   const togglePlay = () => {
     buttonRef.current.play()
