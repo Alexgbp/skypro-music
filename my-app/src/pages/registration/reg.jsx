@@ -20,7 +20,7 @@ export default function Registration({isLoginMode}) {
   const [repeatPassword, setRepeatPassword] = useState("");
 
 
-  const handleRegister = async ({ email, userName, password }) => {
+  const handleRegister = async ({ email, password, userName }) => {
     console.log(isDisabled);
     if (!userName) {
       setError('Укажите имя');
@@ -45,7 +45,7 @@ export default function Registration({isLoginMode}) {
     }
     try {
       setDisabled(true);
-      const user = await regUser(email, userName, password);
+      const user = await regUser(email, password, userName);
       localStorage.setItem('user', JSON.stringify(user));
       setUser(user);
       navigate('/', { replace: true });
