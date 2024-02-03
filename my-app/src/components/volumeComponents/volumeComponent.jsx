@@ -3,7 +3,7 @@ import * as S from "./volume.style.js"
 import VolumeProgressLine from "../VolumeProgressLine/VolumeProgressLine.jsx";
 
 export function VolumeComponent({buttonRef}){
-  const [volume, setVolume] = useState(0)
+  const [volume, setVolume] = useState(1)
 
   const changeVolume = (e) => {
    buttonRef.current.volume = e.target.value

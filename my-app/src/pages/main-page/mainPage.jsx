@@ -15,7 +15,7 @@ import * as S6 from '../../components/otherstyles/main.js';
 import * as S7 from '../../pages/main-page/mainPage'
 import { getAllTracks } from "../../api/api.jsx";
 
- export function MainPage({onClick, user}) {
+ export function MainPage({onClick}) {
 
   const [loader, setLoader] = useState(false);
   const [data, setDataArray] = useState([]);
@@ -40,14 +40,14 @@ import { getAllTracks } from "../../api/api.jsx";
       <S4.Wrapper>
         <S5.Container>
           <S6.Main>
-            <NavMenu user={user}  onClick={onClick} />
+            <NavMenu  onClick={onClick} />
             <S1.MainCenterBlock>
               <SearchBlock />
-              <S2.CenterBlockH2>Треки</S2.CenterBlockH2>
+              <S2.CenterBlockH2>Треки</S2.CenterBlockH2> 
               <Filter dataArray={data} />
-              {newError ? <S7.ErrorMessage>{newError}</S7.ErrorMessage> : <TrackList setCurrentTrack={setCurrentTrack} loader={loader}  array={data}/>}
+              {newError  ? <S7.ErrorMessage>{newError}</S7.ErrorMessage> : <TrackList setCurrentTrack={setCurrentTrack} loader={loader}  array={data}/>}
             </S1.MainCenterBlock>
-            <SideBar loader={loader}  onClick={onClick} />
+            <SideBar  loader={loader}onClick={onClick}/>
           </S6.Main>
             {currentTrack ? <AudioPlayer currentTrack={currentTrack}  loader={loader} /> : null}
           <S3.FooterBlock />

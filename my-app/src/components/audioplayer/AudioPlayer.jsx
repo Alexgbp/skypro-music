@@ -14,14 +14,11 @@ function AudioPlayer({loader, currentTrack}) {
   const [isLoop, setIsLoop] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0)
   const [duration, setDuration] = useState(0);
-  
 
   const toggleLoop = () => {
     buttonRef.current.loop
     setIsLoop(!isLoop)
   }
-
-
 
   const togglePlay = () => {
     buttonRef.current.play()
@@ -37,6 +34,10 @@ function AudioPlayer({loader, currentTrack}) {
     buttonRef.current.duration ? setDuration(buttonRef.current.duration) : setDuration(0);
   });
 
+  useEffect(() => {
+    setPlaying(true)
+  }, [currentTrack]);
+
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
@@ -45,7 +46,7 @@ function AudioPlayer({loader, currentTrack}) {
 
   return (
     <>
-    <S.AudioComponent onTimeUpdate={() => setTimeProgress(buttonRef.current.currentTime)} loop={isLoop} autoPlay src={currentTrack.track_file} controls ref={buttonRef}></S.AudioComponent>
+    <S.AudioComponent onTimeUpdate={() => setTimeProgress(buttonRef.current.currentTime)} loop={isLoop} autoPlay src={currentTrack.track_file} controls ref={buttonRef} volume={0}></S.AudioComponent>
     <S.TimeComponent>{formatTime(timeProgress)} / {formatTime(duration)}</S.TimeComponent>
     <S.Bar $visible={currentTrack}>
       <S.BarContent>
