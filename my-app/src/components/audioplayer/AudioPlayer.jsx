@@ -12,6 +12,7 @@ function AudioPlayer({loader, currentTrack}) {
  
   const [isPlaying, setPlaying] = useState(true)
   const [isLoop, setIsLoop] = useState(false)
+  const [isShufle, setShufle] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0)
   const [duration, setDuration] = useState(0);
 
@@ -28,6 +29,10 @@ function AudioPlayer({loader, currentTrack}) {
   const toggleStop = () => {
     buttonRef.current.pause()
     setPlaying(false)
+  }
+
+  const clickOnShufle = () =>{
+    setShufle(!isShufle)
   }
 
   useEffect(() => {
@@ -74,8 +79,8 @@ function AudioPlayer({loader, currentTrack}) {
                     <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                   </S.PlayerBtnRepeatSvg>
                 </S.PlayerBtnRepeat>
-                <S.PlayerBtnShuffle onClick={NotRealized}>
-                  <S.PlayerBtnShuffleSvg alt="shuffle">
+                <S.PlayerBtnShuffle onClick={clickOnShufle}>
+                  <S.PlayerBtnShuffleSvg $visible={isShufle} alt="shuffle">
                     <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
                   </S.PlayerBtnShuffleSvg>
                 </S.PlayerBtnShuffle>
