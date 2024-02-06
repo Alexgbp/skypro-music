@@ -188,7 +188,24 @@ font-style: normal;
     text-align: right;
     color: #696969;
 `
-
+export const Bubble = styled.div`
+    width: 65px;
+    height: 14px;
+    background-color: #b672ff;
+    border-radius: 8px;
+    display: ${(props) => props.$visible ? "block" : "none"};
+    animation: ${(props) => props.$click ? "bubble_out 0.6s ease-in-out infinite both" : ""};
+  
+  @keyframes bubble_out {
+    0%,
+    to {
+      transform: scale(0.5);
+    }
+    50% {
+      transform: scale(1);
+    }
+  }
+`
   
  
   

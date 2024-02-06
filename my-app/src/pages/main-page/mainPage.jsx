@@ -45,7 +45,7 @@ import { getAllTracks } from "../../api/api.jsx";
               <SearchBlock />
               <S2.CenterBlockH2>Треки</S2.CenterBlockH2> 
               <Filter dataArray={data} />
-              {newError  ? <S7.ErrorMessage>{newError}</S7.ErrorMessage> : <TrackList setCurrentTrack={setCurrentTrack} loader={loader}  array={data}/>}
+              {newError  ? <S7.ErrorMessage>{newError}</S7.ErrorMessage> : <TrackList currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} loader={loader}  array={data}/>}
             </S1.MainCenterBlock>
             <SideBar  loader={loader}onClick={onClick}/>
           </S6.Main>
