@@ -35,6 +35,7 @@ function AudioPlayer({loader, currentTrack}) {
     setShufle(!isShufle)
   }
 
+
   useEffect(() => {
     buttonRef.current.duration ? setDuration(buttonRef.current.duration) : setDuration(0);
   });
@@ -69,7 +70,7 @@ function AudioPlayer({loader, currentTrack}) {
                     <use xlinkHref="img/icon/sprite.svg#icon-play" />
                   </S.PlayBtnPlaySvg>}
                 </S.PlayerBtnPlay>
-                <S.PlayerBtnNext onClick={NotRealized}>
+                <S.PlayerBtnNext>
                   <S.PlayerBtnNextSvg alt="next">
                     <use xlinkHref="img/icon/sprite.svg#icon-next" />
                   </S.PlayerBtnNextSvg>
