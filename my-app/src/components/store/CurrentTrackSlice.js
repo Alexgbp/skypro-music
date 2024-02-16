@@ -21,14 +21,14 @@ export const currenTrackSlice = createSlice({
         },
         setPrevTrack(state){
             const currentIndex = state.track.findIndex((element) =>  element.id === state.currentTrack.id)
-            if(currentIndex === state.track.length){
+            if(currentIndex === 0){
                 return
             }
             state.currentTrack = state.track[currentIndex - 1]
         },
         setNextTrack(state){
             const currentIndex = state.track.findIndex((element) =>  element.id === state.currentTrack.id)
-            if(currentIndex === 0){
+            if(currentIndex === state.track.length - 1){
                 return
             }
             state.currentTrack = state.track[currentIndex + 1]
