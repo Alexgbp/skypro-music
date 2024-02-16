@@ -54,6 +54,8 @@ width: 12px;
     stroke: #696969;
 `
 export const ContentPlaylist = styled.ul`
+box-sizing: border-box;
+padding: 0px 13px;
 height: 400px;
 display: -webkit-box;
 display: -ms-flexbox;
