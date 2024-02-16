@@ -1,21 +1,22 @@
 import React, {useEffect, useRef, useState } from 'react';
 import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import { NotRealized } from '../notrealized/notRealized';
 import { ProgressBar } from '../progresBar/progressBar';
 import { VolumeComponent } from '../volumeComponents/volumeComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { setNextTrack, setPlaying, setPrevTrack, shuffleTrack } from '../store/CurrentTrackSlice';
 
 
 
-function AudioPlayer({loader, currentTrack}) {
+function AudioPlayer({loader}) {
  const buttonRef = useRef(false)
- 
-  const [isPlaying, setPlaying] = useState(true)
+ const currentTrack = useSelector(state => state.tracks.currentTrack)
+ const isPlaying = useSelector(state => state.tracks.isPlay)
+ const isShufle = useSelector(state => state.tracks.isMix)
   const [isLoop, setIsLoop] = useState(false)
-  const [isShufle, setShufle] = useState(false)
   const [timeProgress, setTimeProgress] = useState(0)
   const [duration, setDuration] = useState(0);
-
+  const dispatch = useDispatch()
   const toggleLoop = () => {
     buttonRef.current.loop
     setIsLoop(!isLoop)
@@ -23,26 +24,18 @@ function AudioPlayer({loader, currentTrack}) {
 
   const togglePlay = () => {
     buttonRef.current.play()
-    setPlaying(true)
+    dispatch(setPlaying())
   }
 
   const toggleStop = () => {
     buttonRef.current.pause()
-    setPlaying(false)
-  }
-
-  const clickOnShufle = () =>{
-    setShufle(!isShufle)
+    dispatch(setPlaying())
   }
 
 
   useEffect(() => {
     buttonRef.current.duration ? setDuration(buttonRef.current.duration) : setDuration(0);
   });
-
-  useEffect(() => {
-    setPlaying(true)
-  }, [currentTrack]);
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -60,7 +53,7 @@ function AudioPlayer({loader, currentTrack}) {
           <S.BarPlayerBlock>
             <S.BarPlayer>
               <S.BarPlayerControl>
-                <S.PlayerBtnPrev onClick={NotRealized}>
+                <S.PlayerBtnPrev onClick={() => dispatch(setPrevTrack())}>
                   <S.PlayerBtnPrevSvg alt="prev">
                     <use xlinkHref="img/icon/sprite.svg#icon-prev" />
                   </S.PlayerBtnPrevSvg>
@@ -70,7 +63,7 @@ function AudioPlayer({loader, currentTrack}) {
                     <use xlinkHref="img/icon/sprite.svg#icon-play" />
                   </S.PlayBtnPlaySvg>}
                 </S.PlayerBtnPlay>
-                <S.PlayerBtnNext>
+                <S.PlayerBtnNext onClick={() => dispatch(setNextTrack())}>
                   <S.PlayerBtnNextSvg alt="next">
                     <use xlinkHref="img/icon/sprite.svg#icon-next" />
                   </S.PlayerBtnNextSvg>
@@ -80,7 +73,7 @@ function AudioPlayer({loader, currentTrack}) {
                     <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                   </S.PlayerBtnRepeatSvg>
                 </S.PlayerBtnRepeat>
-                <S.PlayerBtnShuffle onClick={clickOnShufle}>
+                <S.PlayerBtnShuffle onClick={() => dispatch(shuffleTrack())}>
                   <S.PlayerBtnShuffleSvg $visible={isShufle} alt="shuffle">
                     <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
                   </S.PlayerBtnShuffleSvg>

@@ -2,8 +2,14 @@ import React from 'react';
 import * as S from './trackList';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { CustomSkeleton } from '../skeleton/CustomSkeleton';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentTrack } from '../store/CurrentTrackSlice';
 
-function TrackList({ loader, array, setCurrentTrack, currentTrack }) {
+function TrackList({ loader}) {
+  const dispatch = useDispatch()
+  const isPlaying = useSelector(state => state.tracks.isPlay)
+  const currentTrack = useSelector(state => state.tracks.currentTrack)
+  const array = useSelector(state => state.tracks.track)
   return (
     <S.CenterBlockContent>
       <S.ContentTitle>
@@ -32,7 +38,7 @@ function TrackList({ loader, array, setCurrentTrack, currentTrack }) {
         {array.map((element) => {
           return (
             <S.PlayListItem
-              onClick={() => setCurrentTrack(element)}
+              onClick={() => dispatch(setCurrentTrack(element))}
               key={element.id}
             >
               <S.PlayListTrack>
@@ -42,7 +48,7 @@ function TrackList({ loader, array, setCurrentTrack, currentTrack }) {
                       <use xlinkHref="img/icon/sprite.svg#icon-note" />
                     </S.TrackTitleSvg>
                   {/* если трек кликнут идет анимация  */}
-                    <S.Bubble $click={currentTrack} $visible={currentTrack} />
+                    <S.Bubble $visible={currentTrack?.id === element.id} $isPlaying={isPlaying} />
                   </S.TrackTitleImg>
 
                   <S.TrackTitleLink>

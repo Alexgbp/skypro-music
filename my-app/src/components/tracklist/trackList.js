@@ -194,7 +194,7 @@ export const Bubble = styled.div`
     background-color: #b672ff;
     border-radius: 8px;
     display: ${(props) => props.$visible ? "block" : "none"};
-    animation: ${(props) => props.$click ? "bubble_out 0.6s ease-in-out infinite both" : ""};
+    animation: bubble_out 0.6s ease-in-out ${(props) => props.$isPlaying ? "infinite" : ""} both;
   
   @keyframes bubble_out {
     0%,

@@ -14,25 +14,26 @@ import * as S5 from '../../components/otherstyles/container.js';
 import * as S6 from '../../components/otherstyles/main.js';
 import * as S7 from '../../pages/main-page/mainPage'
 import { getAllTracks } from "../../api/api.jsx";
+import {useDispatch, useSelector} from 'react-redux'
+import { setTrack } from '../../components/store/CurrentTrackSlice.js';
 
  export function MainPage({onClick}) {
-
+  const currentTrack = useSelector(state => state.tracks.currentTrack)
   const [loader, setLoader] = useState(false);
-  const [data, setDataArray] = useState([]);
   const [newError, setNewError] = useState(null)
-  const [currentTrack, setCurrentTrack] = useState(null)
+  const dispatch = useDispatch()
 
   useEffect(() => {
       getAllTracks()
       .then((data) => {
         setLoader(true);
-        setDataArray(data);
+        dispatch(setTrack(data))
       })
       .catch((error) =>{
         setNewError(error.message)
         setLoader(true);
       })
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -44,8 +45,8 @@ import { getAllTracks } from "../../api/api.jsx";
             <S1.MainCenterBlock>
               <SearchBlock />
               <S2.CenterBlockH2>Треки</S2.CenterBlockH2> 
-              <Filter dataArray={data} />
-              {newError  ? <S7.ErrorMessage>{newError}</S7.ErrorMessage> : <TrackList currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} loader={loader}  array={data}/>}
+              <Filter />
+              {newError  ? <S7.ErrorMessage>{newError}</S7.ErrorMessage> : <TrackList currentTrack={currentTrack}  loader={loader}/>}
             </S1.MainCenterBlock>
             <SideBar  loader={loader}onClick={onClick}/>
           </S6.Main>
