@@ -1,7 +1,5 @@
 import React from 'react';
-import * as S4 from '../../components/otherstyles/wrapper.js';
-import * as S5 from '../../components/otherstyles/container.js';
-import * as S6 from '../../components/otherstyles/main.js';
+import * as S from '../../components/otherstyles/variousStyle.style.js';
 import { GlobalStyle } from "../../Global.styled.js";
 import { useParams } from 'react-router-dom';
 
@@ -13,13 +11,13 @@ export function Category() {
   return (
     <>
     <GlobalStyle />
-     <S4.Wrapper>
-        <S5.Container>
-        <S6.Main>
+     <S.Wrapper>
+        <S.Container>
+        <S.Main>
           <h1>Playlist</h1>
-        </S6.Main>
-        </S5.Container>
-    </S4.Wrapper>
+        </S.Main>
+        </S.Container>
+    </S.Wrapper>
     </>
   );
 }

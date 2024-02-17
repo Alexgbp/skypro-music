@@ -4,7 +4,7 @@ import { MainPage } from './pages/main-page/mainPage.jsx';
 import Registration from './pages/registration/reg';
 import { PageNotFound } from './pages/not-found/pageNotFound';
 import { Category } from './pages/category/category';
-import { ProtectedRoutes } from "./components/propected/protectedRoutes";
+import { ProtectedRoutes } from "./components/protected/protectedRoutes.jsx";
 import { MyPlayList } from "./pages/my-playlist/myPlaylist";
 export const Context = createContext()
 
