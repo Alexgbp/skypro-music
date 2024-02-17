@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const currenTrackSlice = createSlice({
-    name: "currenTrackSlice",
+export const TracksSlice = createSlice({
+    name: "TracksSlice",
     initialState: {
         track: [],
         currentTrack: null,
@@ -44,5 +44,5 @@ export const currenTrackSlice = createSlice({
     }
 })
 
-export const {setTrack, setCurrentTrack, setPlaying, setPrevTrack, setNextTrack, shuffleTrack}  =  currenTrackSlice.actions;
-export default currenTrackSlice.reducer;
+export const {setTrack, setCurrentTrack, setPlaying, setPrevTrack, setNextTrack, shuffleTrack}  =  TracksSlice.actions;
+export default TracksSlice.reducer;
