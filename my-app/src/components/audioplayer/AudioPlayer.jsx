@@ -10,19 +10,19 @@ import { Context } from '../../routes';
 
 
 function AudioPlayer() {
-  const {loader} = useContext(Context)
- const buttonRef = useRef(false)
- const currentTrack = useSelector(state => state.tracks.currentTrack)
- const isPlaying = useSelector(state => state.tracks.isPlay)
- const isShufle = useSelector(state => state.tracks.isMix)
-  const [isLoop, setIsLoop] = useState(false)
-  const [timeProgress, setTimeProgress] = useState(0)
-  const [duration, setDuration] = useState(0);
-  const dispatch = useDispatch()
-  const toggleLoop = () => {
-    buttonRef.current.loop
-    setIsLoop(!isLoop)
-  }
+ const { loader } = useContext(Context);
+ const buttonRef = useRef(false);
+ const currentTrack = useSelector((state) => state.tracks.currentTrack);
+ const isPlaying = useSelector((state) => state.tracks.isPlay);
+ const isShufle = useSelector((state) => state.tracks.isMix);
+ const [isLoop, setIsLoop] = useState(false);
+ const [timeProgress, setTimeProgress] = useState(0);
+ const [duration, setDuration] = useState(0);
+ const dispatch = useDispatch();
+ const toggleLoop = () => {
+   buttonRef.current.loop;
+   setIsLoop(!isLoop);
+ };
 
   const togglePlay = () => {
     buttonRef.current.play()

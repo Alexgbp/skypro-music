@@ -24,7 +24,7 @@ export function AppRoutes() {
     <Context.Provider value={{user, setUser, loader, setLoader}}>
       <Routes>
       <Route element={<ProtectedRoutes isRegistred={Boolean(user)} />}>
-        <Route path="/favorites" element={<MyPlayList loader={loader} />} />
+        <Route path="/favorites" element={<MyPlayList />} />
         <Route path="/category/:id" element={<Category />} />
         <Route path="/" element={<MainPage onClick={logOutClick} />} />
       </Route>
