@@ -1,14 +1,16 @@
-import React, {useEffect, useRef, useState } from 'react';
+import React, {useContext, useEffect, useRef, useState } from 'react';
 import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { ProgressBar } from '../progresBar/progressBar';
 import { VolumeComponent } from '../volumeComponents/volumeComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { setNextTrack, setPlaying, setPrevTrack, shuffleTrack } from '../store/CurrentTrackSlice';
+import { Context } from '../../routes';
 
 
 
-function AudioPlayer({loader}) {
+function AudioPlayer() {
+  const {loader} = useContext(Context)
  const buttonRef = useRef(false)
  const currentTrack = useSelector(state => state.tracks.currentTrack)
  const isPlaying = useSelector(state => state.tracks.isPlay)

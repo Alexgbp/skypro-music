@@ -12,6 +12,7 @@ export const Context = createContext()
 export function AppRoutes() {
   const navigate = useNavigate()
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [loader, setLoader] = useState(false);
 
   const logOutClick = () => {
     localStorage.removeItem("user")
@@ -20,10 +21,10 @@ export function AppRoutes() {
   }
   
   return (
-    <Context.Provider value={{user, setUser}}>
+    <Context.Provider value={{user, setUser, loader, setLoader}}>
       <Routes>
       <Route element={<ProtectedRoutes isRegistred={Boolean(user)} />}>
-        <Route path="/favorites" element={<MyPlayList />} />
+        <Route path="/favorites" element={<MyPlayList loader={loader} />} />
         <Route path="/category/:id" element={<Category />} />
         <Route path="/" element={<MainPage onClick={logOutClick} />} />
       </Route>

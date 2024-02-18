@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as S from './trackList';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { CustomSkeleton } from '../skeleton/CustomSkeleton';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentTrack} from '../store/CurrentTrackSlice';
 import { AddLike } from '../store/asynkReducers';
+import { Context } from '../../routes';
 
-function TrackList({ loader}) {
+function TrackList() {
   const dispatch = useDispatch()
+  const {loader} = useContext(Context)
   const isPlaying = useSelector(state => state.tracks.isPlay)
   const currentTrack = useSelector(state => state.tracks.currentTrack)
   const array = useSelector(state => state.tracks.track)

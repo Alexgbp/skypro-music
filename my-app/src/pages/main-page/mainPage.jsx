@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import NavMenu from '../../components/navmenu/navMenu.jsx';
 import SearchBlock from '../../components/searchblock/searchBlock.jsx';
 import SideBar from '../../components/sidebar/sideBar.jsx';
@@ -10,10 +10,11 @@ import * as S from '../../components/otherstyles/variousStyle.style.js';
 import { getAllTracks } from "../../api/api.jsx";
 import {useDispatch, useSelector} from 'react-redux'
 import { setTrack } from '../../components/store/CurrentTrackSlice.js';
+import { Context } from '../../routes.jsx';
 
  export function MainPage({onClick}) {
+  const {setLoader} = useContext(Context)
   const currentTrack = useSelector(state => state.tracks.currentTrack)
-  const [loader, setLoader] = useState(false);
   const [newError, setNewError] = useState(null)
   const dispatch = useDispatch()
 
@@ -40,11 +41,11 @@ import { setTrack } from '../../components/store/CurrentTrackSlice.js';
               <SearchBlock />
               <S.CenterBlockH2>Треки</S.CenterBlockH2> 
               <Filter />
-              {newError  ? <S.ErrorMessage>{newError}</S.ErrorMessage> : <TrackList currentTrack={currentTrack}  loader={loader}/>}
+              {newError  ? <S.ErrorMessage>{newError}</S.ErrorMessage> : <TrackList currentTrack={currentTrack}/>}
             </S.MainCenterBlock>
-            <SideBar  loader={loader}onClick={onClick}/>
+            <SideBar onClick={onClick}/>
           </S.Main>
-            {currentTrack ? <AudioPlayer currentTrack={currentTrack}  loader={loader} /> : null}
+            {currentTrack ? <AudioPlayer currentTrack={currentTrack} /> : null}
           <S.FooterBlock />
         </S.Container>
       </S.Wrapper>
