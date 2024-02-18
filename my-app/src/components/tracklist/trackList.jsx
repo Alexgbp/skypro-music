@@ -3,7 +3,8 @@ import * as S from './trackList';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { CustomSkeleton } from '../skeleton/CustomSkeleton';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentTrack } from '../store/CurrentTrackSlice';
+import { setCurrentTrack} from '../store/CurrentTrackSlice';
+import { AddLike } from '../store/asynkReducers';
 
 function TrackList({ loader}) {
   const dispatch = useDispatch()
@@ -62,8 +63,7 @@ function TrackList({ loader}) {
                 <S.TrackAlbum>
                   <S.TrackAlbumLink>{element.album}</S.TrackAlbumLink>
                 </S.TrackAlbum>
-
-                <S.TrackTimeSvg alt="time">
+                <S.TrackTimeSvg onClick={() => dispatch(AddLike(element.id))}  alt="time">
                   <use xlinkHref="img/icon/sprite.svg#icon-like" />
                 </S.TrackTimeSvg>
                 <S.TrackTimeText>{element.duration_in_seconds}</S.TrackTimeText>

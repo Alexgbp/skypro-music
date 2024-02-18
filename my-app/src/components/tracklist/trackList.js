@@ -126,11 +126,11 @@ justify-content: center;
 margin-right: 17px;
 `
 export const TrackTitleSvg = styled.svg`
-width: 18px;
-    height: 17px;
-    fill: transparent;
-    stroke: #4e4e4e;
-`
+  width: 18px;
+  height: 17px;
+  fill: transparent;
+  stroke: #4e4e4e;
+`;
 export const TrackTitleLink = styled.a`
 font-style: normal;
     font-weight: 400;
@@ -180,7 +180,7 @@ width: 14px;
 height: 12px;
 margin-right: 17px;
 fill: transparent;
-stroke: #696969;
+stroke:  ${prop => prop.$like ? "pink" : "#696969"};
 `
 export const TrackTimeText = styled.span`
 font-style: normal;
