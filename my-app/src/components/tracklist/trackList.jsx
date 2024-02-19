@@ -50,7 +50,6 @@ function TrackList() {
                     <S.TrackTitleSvg alt="music">
                       <use xlinkHref="img/icon/sprite.svg#icon-note" />
                     </S.TrackTitleSvg>
-                    {/* если трек кликнут идет анимация  */}
                     <S.Bubble
                       $visible={currentTrack?.id === element.id}
                       $isPlaying={isPlaying}

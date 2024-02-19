@@ -22,6 +22,7 @@ function AudioPlayer() {
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const dispatch = useDispatch();
+  
   const toggleLoop = () => {
     buttonRef.current.loop;
     setIsLoop(!isLoop);
