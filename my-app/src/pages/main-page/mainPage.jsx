@@ -7,27 +7,27 @@ import Filter from '../../components/filter/filter.jsx';
 import TrackList from '../../components/tracklist/trackList.jsx';
 import { GlobalStyle } from '../../Global.styled.js';
 import * as S from '../../components/otherstyles/variousStyle.style.js';
-import { getAllTracks } from "../../api/api.jsx";
-import {useDispatch, useSelector} from 'react-redux'
-import { setTrack } from '../../components/store/CurrentTrackSlice.js';
+import { getAllTracks } from '../../api/api.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTrack } from '../../store/CurrentTrackSlice.js';
 import { Context } from '../../routes.jsx';
 
- export function MainPage({onClick}) {
-  const {setLoader} = useContext(Context)
-  const currentTrack = useSelector(state => state.tracks.currentTrack)
-  const [newError, setNewError] = useState(null)
-  const dispatch = useDispatch()
+export function MainPage({ onClick }) {
+  const { setLoader } = useContext(Context);
+  const currentTrack = useSelector((state) => state.tracks.currentTrack);
+  const [newError, setNewError] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-      getAllTracks()
+    getAllTracks()
       .then((data) => {
         setLoader(true);
-        dispatch(setTrack(data))
+        dispatch(setTrack(data));
       })
-      .catch((error) =>{
-        setNewError(error.message)
+      .catch((error) => {
+        setNewError(error.message);
         setLoader(true);
-      })
+      });
   }, [dispatch]);
 
   return (
@@ -36,20 +36,23 @@ import { Context } from '../../routes.jsx';
       <S.Wrapper>
         <S.Container>
           <S.Main>
-            <NavMenu  onClick={onClick} />
+            <NavMenu onClick={onClick} />
             <S.MainCenterBlock>
               <SearchBlock />
-              <S.CenterBlockH2>Треки</S.CenterBlockH2> 
+              <S.CenterBlockH2>Треки</S.CenterBlockH2>
               <Filter />
-              {newError  ? <S.ErrorMessage>{newError}</S.ErrorMessage> : <TrackList currentTrack={currentTrack}/>}
+              {newError ? (
+                <S.ErrorMessage>{newError}</S.ErrorMessage>
+              ) : (
+                <TrackList currentTrack={currentTrack} />
+              )}
             </S.MainCenterBlock>
-            <SideBar onClick={onClick}/>
+            <SideBar onClick={onClick} />
           </S.Main>
-            {currentTrack ? <AudioPlayer currentTrack={currentTrack} /> : null}
+          {currentTrack ? <AudioPlayer currentTrack={currentTrack} /> : null}
           <S.FooterBlock />
         </S.Container>
       </S.Wrapper>
     </>
   );
 }
-

@@ -1,57 +1,77 @@
-import React, {useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import * as S from './AudioPlayer';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { ProgressBar } from '../progresBar/progressBar';
 import { VolumeComponent } from '../volumeComponents/volumeComponent';
 import { useDispatch, useSelector } from 'react-redux';
-import { setNextTrack, setPlaying, setPrevTrack, shuffleTrack } from '../store/CurrentTrackSlice';
+import {
+  setNextTrack,
+  setPlaying,
+  setPrevTrack,
+  shuffleTrack,
+} from '../../store/CurrentTrackSlice';
 import { Context } from '../../routes';
 
-
-
 function AudioPlayer() {
- const { loader } = useContext(Context);
- const buttonRef = useRef(false);
- const currentTrack = useSelector((state) => state.tracks.currentTrack);
- const isPlaying = useSelector((state) => state.tracks.isPlay);
- const isShufle = useSelector((state) => state.tracks.isMix);
- const [isLoop, setIsLoop] = useState(false);
- const [timeProgress, setTimeProgress] = useState(0);
- const [duration, setDuration] = useState(0);
- const dispatch = useDispatch();
- const toggleLoop = () => {
-   buttonRef.current.loop;
-   setIsLoop(!isLoop);
- };
+  const { loader } = useContext(Context);
+  const buttonRef = useRef(false);
+  const currentTrack = useSelector((state) => state.tracks.currentTrack);
+  const isPlaying = useSelector((state) => state.tracks.isPlay);
+  const isShufle = useSelector((state) => state.tracks.isMix);
+  const [isLoop, setIsLoop] = useState(false);
+  const [timeProgress, setTimeProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const dispatch = useDispatch();
+  const toggleLoop = () => {
+    buttonRef.current.loop;
+    setIsLoop(!isLoop);
+  };
 
   const togglePlay = () => {
-    buttonRef.current.play()
-    dispatch(setPlaying())
-  }
+    buttonRef.current.play();
+    dispatch(setPlaying());
+  };
 
   const toggleStop = () => {
-    buttonRef.current.pause()
-    dispatch(setPlaying())
-  }
-
+    buttonRef.current.pause();
+    dispatch(setPlaying());
+  };
 
   useEffect(() => {
-    buttonRef.current.duration ? setDuration(buttonRef.current.duration) : setDuration(0);
+    buttonRef.current.duration
+      ? setDuration(buttonRef.current.duration)
+      : setDuration(0);
   });
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
-    return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    return `${minutes.toString().padStart(2, '0')}:${seconds
+      .toString()
+      .padStart(2, '0')}`;
   };
 
   return (
     <>
-    <S.AudioComponent onTimeUpdate={() => setTimeProgress(buttonRef.current.currentTime)} loop={isLoop} autoPlay src={currentTrack.track_file} controls ref={buttonRef} volume={0}></S.AudioComponent>
-    <S.TimeComponent>{formatTime(timeProgress)} / {formatTime(duration)}</S.TimeComponent>
-    <S.Bar $visible={currentTrack}>
-      <S.BarContent>
-      <ProgressBar timeProgress={timeProgress} buttonRef={buttonRef} duration={duration}></ProgressBar>
+      <S.AudioComponent
+        onTimeUpdate={() => setTimeProgress(buttonRef.current.currentTime)}
+        loop={isLoop}
+        autoPlay
+        src={currentTrack.track_file}
+        controls
+        ref={buttonRef}
+        volume={0}
+      ></S.AudioComponent>
+      <S.TimeComponent>
+        {formatTime(timeProgress)} / {formatTime(duration)}
+      </S.TimeComponent>
+      <S.Bar $visible={currentTrack}>
+        <S.BarContent>
+          <ProgressBar
+            timeProgress={timeProgress}
+            buttonRef={buttonRef}
+            duration={duration}
+          ></ProgressBar>
           <S.BarPlayerBlock>
             <S.BarPlayer>
               <S.BarPlayerControl>
@@ -61,9 +81,16 @@ function AudioPlayer() {
                   </S.PlayerBtnPrevSvg>
                 </S.PlayerBtnPrev>
                 <S.PlayerBtnPlay onClick={isPlaying ? toggleStop : togglePlay}>
-                  {isPlaying ?  <S.StopBtnPlaySvg alt="stop"> <use xlinkHref="img/icon/sprite.svg#icon-pause" ></use></S.StopBtnPlaySvg> : <S.PlayBtnPlaySvg alt="play">
-                    <use xlinkHref="img/icon/sprite.svg#icon-play" />
-                  </S.PlayBtnPlaySvg>}
+                  {isPlaying ? (
+                    <S.StopBtnPlaySvg alt="stop">
+                      {' '}
+                      <use xlinkHref="img/icon/sprite.svg#icon-pause"></use>
+                    </S.StopBtnPlaySvg>
+                  ) : (
+                    <S.PlayBtnPlaySvg alt="play">
+                      <use xlinkHref="img/icon/sprite.svg#icon-play" />
+                    </S.PlayBtnPlaySvg>
+                  )}
                 </S.PlayerBtnPlay>
                 <S.PlayerBtnNext onClick={() => dispatch(setNextTrack())}>
                   <S.PlayerBtnNextSvg alt="next">
@@ -83,22 +110,34 @@ function AudioPlayer() {
               </S.BarPlayerControl>
               <S.PlayerTrackPlay>
                 <S.TrackPlayConatin>
-                 <SkeletonTheme baseColor='grey'>
-                 <S.TrackPlayImage>
-                   {loader ?  <S.TrackPlaySvg alt="music">
-                      <use xlinkHref="img/icon/sprite.svg#icon-note" />
-                    </S.TrackPlaySvg>: <Skeleton width={50} height={60} />}
-                  </S.TrackPlayImage>
-                 </SkeletonTheme>
+                  <SkeletonTheme baseColor="grey">
+                    <S.TrackPlayImage>
+                      {loader ? (
+                        <S.TrackPlaySvg alt="music">
+                          <use xlinkHref="img/icon/sprite.svg#icon-note" />
+                        </S.TrackPlaySvg>
+                      ) : (
+                        <Skeleton width={50} height={60} />
+                      )}
+                    </S.TrackPlayImage>
+                  </SkeletonTheme>
                   <S.TrackPlayAuthor>
-                    {loader ? <S.TrackPlayAuthorLink href="http://">
-                      {currentTrack.name}
-                    </S.TrackPlayAuthorLink> : <Skeleton width={50} />}
+                    {loader ? (
+                      <S.TrackPlayAuthorLink href="http://">
+                        {currentTrack.name}
+                      </S.TrackPlayAuthorLink>
+                    ) : (
+                      <Skeleton width={50} />
+                    )}
                   </S.TrackPlayAuthor>
                   <S.TrackPlayAlbum>
-                    {loader ? <S.TrackPlayAlbumLink href="http://">
-                    {currentTrack.author}
-                    </S.TrackPlayAlbumLink> : <Skeleton width={50} />}
+                    {loader ? (
+                      <S.TrackPlayAlbumLink href="http://">
+                        {currentTrack.author}
+                      </S.TrackPlayAlbumLink>
+                    ) : (
+                      <Skeleton width={50} />
+                    )}
                   </S.TrackPlayAlbum>
                 </S.TrackPlayConatin>
                 <S.TrackPlayLikeDis>
@@ -115,14 +154,12 @@ function AudioPlayer() {
                 </S.TrackPlayLikeDis>
               </S.PlayerTrackPlay>
             </S.BarPlayer>
-            <VolumeComponent  buttonRef={buttonRef}/>
+            <VolumeComponent buttonRef={buttonRef} />
           </S.BarPlayerBlock>
-      </S.BarContent>
-    </S.Bar>
-    
+        </S.BarContent>
+      </S.Bar>
     </>
   );
 }
-
 
 export default AudioPlayer;

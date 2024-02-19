@@ -23,6 +23,7 @@ export const TracksSlice = createSlice({
       state.isPlay = !state.isPlay;
     },
     setPrevTrack(state) {
+      state.isPlay = true
       if (state.isMix) {
         const randomIndex = Math.floor(Math.random() * state.track.length);
         state.currentTrack = state.track[randomIndex];
@@ -37,6 +38,7 @@ export const TracksSlice = createSlice({
       state.currentTrack = state.track[currentIndex - 1];
     },
     setNextTrack(state) {
+      state.isPlay = true
       if (state.isMix) {
         const randomIndex = Math.floor(Math.random() * state.track.length);
         state.currentTrack = state.track[randomIndex];
