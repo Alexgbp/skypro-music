@@ -51,11 +51,6 @@ export const TracksSlice = createSlice({
     },
     shuffleTrack(state) {
       state.isMix = !state.isMix;
-      if (!state.isMix) {
-        return;
-      }
-      const randomIndex = Math.floor(Math.random() * state.track.length);
-      state.currentTrack = state.track[randomIndex];
     },
   },
   extraReducers: (builder) => {
