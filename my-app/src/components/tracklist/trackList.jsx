@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as S from './trackList';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { CustomSkeleton } from '../skeleton/CustomSkeleton';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentTrack } from '../../store/CurrentTrackSlice';
+import { AddLike } from '../../store/asynkReducers';
+import { Context } from '../../routes';
 
-function TrackList({ loader, array, setCurrentTrack, currentTrack }) {
+function TrackList() {
+  const dispatch = useDispatch();
+  const { loader } = useContext(Context);
+  const isPlaying = useSelector((state) => state.tracks.isPlay);
+  const currentTrack = useSelector((state) => state.tracks.currentTrack);
+  const array = useSelector((state) => state.tracks.track);
   return (
     <S.CenterBlockContent>
       <S.ContentTitle>
@@ -32,7 +41,7 @@ function TrackList({ loader, array, setCurrentTrack, currentTrack }) {
         {array.map((element) => {
           return (
             <S.PlayListItem
-              onClick={() => setCurrentTrack(element)}
+              onClick={() => dispatch(setCurrentTrack(element))}
               key={element.id}
             >
               <S.PlayListTrack>
@@ -41,13 +50,15 @@ function TrackList({ loader, array, setCurrentTrack, currentTrack }) {
                     <S.TrackTitleSvg alt="music">
                       <use xlinkHref="img/icon/sprite.svg#icon-note" />
                     </S.TrackTitleSvg>
-                  {/* если трек кликнут идет анимация  */}
-                    <S.Bubble $click={currentTrack} $visible={currentTrack} />
+                    <S.Bubble
+                      $visible={currentTrack?.id === element.id}
+                      $isPlaying={isPlaying}
+                    />
                   </S.TrackTitleImg>
 
                   <S.TrackTitleLink>
                     {element.name}
-                    <S.TrackTitleSpan /> 
+                    <S.TrackTitleSpan />
                   </S.TrackTitleLink>
                 </S.TrackTitle>
                 <S.TrackAuthor>
@@ -56,8 +67,10 @@ function TrackList({ loader, array, setCurrentTrack, currentTrack }) {
                 <S.TrackAlbum>
                   <S.TrackAlbumLink>{element.album}</S.TrackAlbumLink>
                 </S.TrackAlbum>
-
-                <S.TrackTimeSvg alt="time">
+                <S.TrackTimeSvg
+                  onClick={() => dispatch(AddLike(element.id))}
+                  alt="time"
+                >
                   <use xlinkHref="img/icon/sprite.svg#icon-like" />
                 </S.TrackTimeSvg>
                 <S.TrackTimeText>{element.duration_in_seconds}</S.TrackTimeText>

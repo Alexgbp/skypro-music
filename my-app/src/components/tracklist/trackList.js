@@ -54,6 +54,8 @@ width: 12px;
     stroke: #696969;
 `
 export const ContentPlaylist = styled.ul`
+box-sizing: border-box;
+padding: 0px 13px;
 height: 400px;
 display: -webkit-box;
 display: -ms-flexbox;
@@ -124,11 +126,11 @@ justify-content: center;
 margin-right: 17px;
 `
 export const TrackTitleSvg = styled.svg`
-width: 18px;
-    height: 17px;
-    fill: transparent;
-    stroke: #4e4e4e;
-`
+  width: 18px;
+  height: 17px;
+  fill: transparent;
+  stroke: #4e4e4e;
+`;
 export const TrackTitleLink = styled.a`
 font-style: normal;
     font-weight: 400;
@@ -178,7 +180,7 @@ width: 14px;
 height: 12px;
 margin-right: 17px;
 fill: transparent;
-stroke: #696969;
+stroke:  ${prop => prop.$like ? "pink" : "#696969"};
 `
 export const TrackTimeText = styled.span`
 font-style: normal;
@@ -194,7 +196,7 @@ export const Bubble = styled.div`
     background-color: #b672ff;
     border-radius: 8px;
     display: ${(props) => props.$visible ? "block" : "none"};
-    animation: ${(props) => props.$click ? "bubble_out 0.6s ease-in-out infinite both" : ""};
+    animation: bubble_out 0.6s ease-in-out ${(props) => props.$isPlaying ? "infinite" : ""} both;
   
   @keyframes bubble_out {
     0%,

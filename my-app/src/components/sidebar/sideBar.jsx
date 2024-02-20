@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext} from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import * as S from "./sideBar"
 import {Context} from "../../routes"
 
 
- export default function SideBar({loader, onClick}) {
-  const {user} = useContext(Context)
+ export default function SideBar({ onClick}) {
+  
+  const {user, loader} = useContext(Context)
   return (
     <S.MainSideBar>
       <S.SideBarPersonal>

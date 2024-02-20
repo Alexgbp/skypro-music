@@ -1,9 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import * as S from './filter'
+import { useSelector } from 'react-redux';
 
-export default function Filter({dataArray}) {
+export default function Filter() {
   
+  const dataArray = useSelector(state => state.tracks.track)
   const filterForAuthor = dataArray.map((element) => element.author);
   const filterForYear = dataArray.map((element) => element.release_date);
   const filterForGenre = dataArray.map((element) => element.genre);

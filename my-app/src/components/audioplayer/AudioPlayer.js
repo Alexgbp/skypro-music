@@ -146,7 +146,7 @@ export const PlayerBtnShuffleSvg = styled.svg`
 width: 19px;
     height: 12px;
     fill: transparent;
-    stroke: #696969;
+    stroke:  ${(prop) => prop.$visible ? "#ffff" : "#696969"};
 `
 
 export const PlayerTrackPlay = styled.div`
