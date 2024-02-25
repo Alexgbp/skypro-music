@@ -68,7 +68,7 @@ function TrackList() {
                   <S.TrackAlbumLink>{element.album}</S.TrackAlbumLink>
                 </S.TrackAlbum>
                 <S.TrackTimeSvg
-                  onClick={() => dispatch(AddLike(element.id))}
+                  onClick={() => dispatch(AddLike({id:element.id}))}
                   alt="time"
                 >
                   <use xlinkHref="img/icon/sprite.svg#icon-like" />
