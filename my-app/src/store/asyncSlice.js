@@ -1,10 +1,5 @@
-// extraReducers: (builder) => {
-//   builder.addCase(AddLike.rejected, (state, action) => {
-//     state.error = action.payload;
-//   });
-// },
-
 import { createSlice } from "@reduxjs/toolkit";
+import { AddLike } from "./apiForRedux";
 
 export const asyncSlice = createSlice({
   name: "track/Like",
@@ -13,5 +8,10 @@ export const asyncSlice = createSlice({
   },
   reducers: {
 
-  }
+  },
+  extraReducers: (builder) => {
+    builder.addCase(AddLike.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+  },
 })

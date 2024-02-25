@@ -1,16 +1,16 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { tokenUser } from "../api/api";
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const AddLike = createAsyncThunk(
-  "track/addLike",
-  async function(id,{dispatch}){
-      const response = await fetch(`https://skypro-music-api.skyeng.tech/catalog/track/${id}/favorite/`, {
-        method: "POST",
+  'track/addLike',
+  async function (id) {
+    const response = await fetch(`https://skypro-music-api.skyeng.tech/catalog/track/${id}/favorite/`, {
+        method: 'POST',
         headers: {
-          Authorization: `Bearer`
+          'content-type': 'application/json',
+          Authorization: `Bearer`,
         },
-      })
-      await response.json()
-      dispatch(tokenUser())
+      }
+    );
+    await response.json();
   }
-)
+);
