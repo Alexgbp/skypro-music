@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import currentReducer from "./CurrentTrackSlice";
+import {TracksSlice} from "./CurrentTrackSlice";
+import { asyncSlice } from "./asyncSlice";
 
 export default configureStore({
     reducer: {
-        tracks: currentReducer,
+        tracks: TracksSlice.reducer,
+        favoriteTracks: asyncSlice.reducer
     },
 })

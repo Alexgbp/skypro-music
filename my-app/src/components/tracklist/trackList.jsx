@@ -4,7 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { CustomSkeleton } from '../skeleton/CustomSkeleton';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentTrack } from '../../store/CurrentTrackSlice';
-import { AddLike } from '../../store/asynkReducers';
+import { AddLike } from '../../store/apiForRedux';
 import { Context } from '../../routes';
 
 function TrackList() {
