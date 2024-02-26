@@ -13,6 +13,7 @@ function TrackList() {
   const isPlaying = useSelector((state) => state.tracks.isPlay);
   const currentTrack = useSelector((state) => state.tracks.currentTrack);
   const array = useSelector((state) => state.tracks.track);
+  const {token} = useContext(Context)
   return (
     <S.CenterBlockContent>
       <S.ContentTitle>
@@ -68,7 +69,7 @@ function TrackList() {
                   <S.TrackAlbumLink>{element.album}</S.TrackAlbumLink>
                 </S.TrackAlbum>
                 <S.TrackTimeSvg
-                  onClick={() => dispatch(AddLike({id:element.id}))}
+                  onClick={() => dispatch(AddLike({id:element.id, token}))}
                   alt="time"
                 >
                   <use xlinkHref="img/icon/sprite.svg#icon-like" />

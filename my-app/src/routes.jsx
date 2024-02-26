@@ -14,6 +14,7 @@ export const Context = createContext()
 export function AppRoutes() {
   const navigate = useNavigate()
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [token, setToken] = useState(null)
   const [loader, setLoader] = useState(false);
   const dispatch = useDispatch()
 
@@ -26,7 +27,7 @@ export function AppRoutes() {
 
   
   return (
-    <Context.Provider value={{user, setUser, loader, setLoader}}>
+    <Context.Provider value={{user, setUser, loader, setLoader, token, setToken}}>
       <Routes>
       <Route element={<ProtectedRoutes isRegistred={Boolean(user)} />}>
         <Route path="/favorites" element={<MyPlayList />} />
