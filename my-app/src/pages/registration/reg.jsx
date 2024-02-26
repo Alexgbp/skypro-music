@@ -7,7 +7,7 @@ import { Context } from "../../routes";
 
 
 export default function Registration({isLoginMode}) {
-
+  const {setToken} = useContext(Context)
   const {setUser} = useContext(Context)
 
   const navigate = useNavigate();
@@ -69,7 +69,10 @@ export default function Registration({isLoginMode}) {
     }
     try {
       setDisabled(true);
-      await tokenUser(email, password)
+       const token = await tokenUser(email, password)
+       if(token){
+        setToken(token)
+       }
       const response = await logUser(email, password);
       localStorage.setItem('user', JSON.stringify(response));
       setUser(response)

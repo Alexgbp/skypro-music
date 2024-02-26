@@ -1,6 +1,3 @@
-import { useContext } from "react";
-import { Context } from "../routes";
-
 export  async function getAllTracks() {
   const fetchTracks =  await fetch(
     'https://skypro-music-api.skyeng.tech/catalog/track/all/', {
@@ -54,7 +51,6 @@ export async function logUser(email, password) {
 }
 
 export async function tokenUser(email, password) {
-  const { setToken } = useContext(Context);
   const tokenUser = await fetch(
     'https://skypro-music-api.skyeng.tech/user/token/',
     {
@@ -69,5 +65,5 @@ export async function tokenUser(email, password) {
     }
   );
   const response = await tokenUser.json();
-  setToken(response);
+  return response;
 }
