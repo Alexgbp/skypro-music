@@ -7,7 +7,7 @@ export const AddLike = createAsyncThunk(
         method: 'POST',
         headers: {
           'content-type': 'application/json',
-          Authorization: `Bearer${token}`,
+          Authorization: `Bearer ${token}`,
         },
       }
     );
