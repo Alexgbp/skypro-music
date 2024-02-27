@@ -7,6 +7,7 @@ export const TracksSlice = createSlice({
     currentTrack: null,
     isPlay: false,
     isMix: false,
+    isLike: false,
     status: null,
     error: null,
   },
@@ -53,7 +54,10 @@ export const TracksSlice = createSlice({
     shuffleTrack(state) {
       state.isMix = !state.isMix;
     },
+    setLike(state){
+      state.isLike = !state.isLike
+    }
   },
 });
 
-export const {setTrack, setCurrentTrack, setPlaying, setPrevTrack, setNextTrack, shuffleTrack}  =  TracksSlice.actions;
+export const {setTrack, setCurrentTrack, setPlaying, setPrevTrack, setNextTrack, shuffleTrack, setLike}  =  TracksSlice.actions;

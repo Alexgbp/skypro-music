@@ -3,7 +3,7 @@ import * as S from './trackList';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { CustomSkeleton } from '../skeleton/CustomSkeleton';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentTrack } from '../../store/CurrentTrackSlice';
+import { setCurrentTrack} from '../../store/CurrentTrackSlice';
 import { AddLike } from '../../store/apiForRedux';
 import { Context } from '../../routes';
 
@@ -13,7 +13,9 @@ function TrackList() {
   const isPlaying = useSelector((state) => state.tracks.isPlay);
   const currentTrack = useSelector((state) => state.tracks.currentTrack);
   const array = useSelector((state) => state.tracks.track);
+  const isLike = useSelector(state => state.tracks.isLike)
   const {token} = useContext(Context)
+
   return (
     <S.CenterBlockContent>
       <S.ContentTitle>
@@ -71,7 +73,7 @@ function TrackList() {
                 <S.TrackTimeSvg
                   onClick={() => dispatch(AddLike({id:element.id, token}))}
                   alt="time">
-                  <use xlinkHref="img/icon/sprite.svg#icon-like" />
+                  {isLike ? <use xlinkHref="img/icon/sprite.svg#color-like" /> : <use xlinkHref="img/icon/sprite.svg#icon-like" />}
                 </S.TrackTimeSvg>
                 <S.TrackTimeText>{element.duration_in_seconds}</S.TrackTimeText>
               </S.PlayListTrack>

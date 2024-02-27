@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { setLike } from './CurrentTrackSlice';
 
 export const AddLike = createAsyncThunk(
   'track/addLike',
-  async function ({id, token}) {
+  async function ({id, token, dispatch}) {
     const response = await fetch(`https://skypro-music-api.skyeng.tech/catalog/track/${id}/favorite/`, {
         method: 'POST',
         headers: {
@@ -12,5 +13,6 @@ export const AddLike = createAsyncThunk(
       }
     );
     await response.json();
+    dispatch(setLike())
   }
 );
