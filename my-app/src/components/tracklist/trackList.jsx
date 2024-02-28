@@ -58,7 +58,6 @@ function TrackList() {
                       $isPlaying={isPlaying}
                     />
                   </S.TrackTitleImg>
-
                   <S.TrackTitleLink>
                     {element.name}
                     <S.TrackTitleSpan />
