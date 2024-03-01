@@ -70,7 +70,10 @@ function TrackList() {
                   <S.TrackAlbumLink>{element.album}</S.TrackAlbumLink>
                 </S.TrackAlbum>
                 <S.TrackTimeSvg
-                  onClick={() => dispatch(AddLike({id:element.id, token}))}
+                  onClick={(e) =>{
+                    e.stopPropagation()
+                    dispatch(AddLike({id: element.id, token: token.access}))
+                  }}
                   alt="time">
                   {isLike ? <use xlinkHref="img/icon/sprite.svg#color-like" /> : <use xlinkHref="img/icon/sprite.svg#icon-like" />}
                 </S.TrackTimeSvg>

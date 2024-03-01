@@ -14,7 +14,7 @@ export const Context = createContext()
 export function AppRoutes() {
   const navigate = useNavigate()
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")))
   const [loader, setLoader] = useState(false);
   const dispatch = useDispatch()
 

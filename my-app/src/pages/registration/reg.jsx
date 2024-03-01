@@ -70,9 +70,8 @@ export default function Registration({isLoginMode}) {
     try {
       setDisabled(true);
        const token = await tokenUser(email, password)
-       if(token){
-        setToken(token)
-       }
+      localStorage.setItem("token", JSON.stringify(token))
+      setToken(token)
       const response = await logUser(email, password);
       localStorage.setItem('user', JSON.stringify(response));
       setUser(response)
