@@ -16,3 +16,20 @@ export const AddLike = createAsyncThunk(
     dispatch(setLike())
   }
 );
+
+export const DeleteLike = createAsyncThunk(
+  'track/deleteLike',
+  async function ({id, token, dispatch}) {
+    const response = await fetch(`https://skypro-music-api.skyeng.tech/catalog/track/${id}/favorite/`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    await response.json();
+    dispatch(setLike())
+  }
+);
+

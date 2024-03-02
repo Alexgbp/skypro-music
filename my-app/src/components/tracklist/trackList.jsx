@@ -4,7 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { CustomSkeleton } from '../skeleton/CustomSkeleton';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentTrack} from '../../store/CurrentTrackSlice';
-import { AddLike } from '../../store/apiForRedux';
+import { AddLike, DeleteLike } from '../../store/apiForRedux';
 import { Context } from '../../routes';
 
 function TrackList() {
@@ -72,7 +72,7 @@ function TrackList() {
                 <S.TrackTimeSvg
                   onClick={(e) =>{
                     e.stopPropagation()
-                    dispatch(AddLike({id: element.id, token: token.access}))
+                    isLike ? dispatch(DeleteLike({id: element.id, token: token.access})) : dispatch(AddLike({id: element.id, token: token.access}))
                   }}
                   alt="time">
                   {isLike ? <use xlinkHref="img/icon/sprite.svg#color-like" /> : <use xlinkHref="img/icon/sprite.svg#icon-like" />}
