@@ -65,5 +65,5 @@ export async function tokenUser(email, password) {
     }
   );
   const response = await tokenUser.json();
-  return response;
+  return response
 }
