@@ -44,13 +44,13 @@ export default function Registration({isLoginMode}) {
       return;
     }
     try {
-      setDisabled(true);
-      const token = await tokenUser(email, password)
-      localStorage.setItem("token", JSON.stringify(token))
-      setToken(token)
       const user = await regUser(email, password, userName);
       localStorage.setItem('user', JSON.stringify(user));
       setUser(user);
+      setDisabled(true);
+      const token = await tokenUser(email, password);
+      localStorage.setItem("token", JSON.stringify(token));
+      setToken(token);
       navigate('/', { replace: true });
     } catch (error) {
       setError(error.message);
