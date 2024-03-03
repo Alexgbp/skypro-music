@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setLike } from './CurrentTrackSlice';
+import { refreshTokenUser } from '../api/api';
 
 export const AddLike = createAsyncThunk(
   'track/addLike',
@@ -12,6 +13,10 @@ export const AddLike = createAsyncThunk(
         },
       }
     );
+   // Тут првоерить статус на 401 и через диспатч вызвать фукцию токен рефреш
+   if(response.status === 401){
+    refreshTokenUser(token)
+   }
     await response.json();
     dispatch(setLike())
   }
@@ -28,6 +33,9 @@ export const DeleteLike = createAsyncThunk(
         },
       }
     );
+    if(response.status === 401){
+      refreshTokenUser(token)
+     }
     await response.json();
     dispatch(setLike())
   }

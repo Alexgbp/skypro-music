@@ -67,3 +67,19 @@ export async function tokenUser(email, password) {
   const response = await tokenUser.json();
   return response
 }
+export async function refreshTokenUser(token) {
+  const refreshTokenUser = await fetch(
+    'https://skypro-music-api.skyeng.tech/user/token/refresh/',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        refresh: token
+      }),
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  );
+  const response = await refreshTokenUser.json();
+  return response
+}
