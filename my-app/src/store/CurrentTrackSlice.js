@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AddLike } from "./asynkReducers";
 
 export const TracksSlice = createSlice({
   name: 'TracksSlice',
@@ -8,6 +7,7 @@ export const TracksSlice = createSlice({
     currentTrack: null,
     isPlay: false,
     isMix: false,
+    isLike: false,
     status: null,
     error: null,
   },
@@ -54,13 +54,10 @@ export const TracksSlice = createSlice({
     shuffleTrack(state) {
       state.isMix = !state.isMix;
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(AddLike.rejected, (state, action) => {
-      state.error = action.payload;
-    });
+    setLike(state){
+      state.isLike = !state.isLike
+    }
   },
 });
 
-export const {setTrack, setCurrentTrack, setPlaying, setPrevTrack, setNextTrack, shuffleTrack}  =  TracksSlice.actions;
-export default TracksSlice.reducer;
+export const {setTrack, setCurrentTrack, setPlaying, setPrevTrack, setNextTrack, shuffleTrack, setLike}  =  TracksSlice.actions;

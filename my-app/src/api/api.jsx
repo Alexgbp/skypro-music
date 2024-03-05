@@ -11,7 +11,6 @@ export  async function getAllTracks() {
 }
 
 export async function regUser(email, password, userName) {
-
   const regUser =  await fetch('https://skypro-music-api.skyeng.tech/user/signup/', {
     method: 'POST',
     body: JSON.stringify({
@@ -52,17 +51,35 @@ export async function logUser(email, password) {
 }
 
 export async function tokenUser(email, password) {
-
-  const tokenUser =  await fetch('https://skypro-music-api.skyeng.tech/user/token/', {
-    method: 'POST',
-    body: JSON.stringify({
-      email,
-      password,
-    }),
-    headers: {
-      'content-type': 'application/json',
-    },
-  })
+  const tokenUser = await fetch(
+    'https://skypro-music-api.skyeng.tech/user/token/',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  );
   const response = await tokenUser.json();
+  return response
+}
+export async function refreshTokenUser(token) {
+  const refreshTokenUser = await fetch(
+    'https://skypro-music-api.skyeng.tech/user/token/refresh/',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        refresh: token
+      }),
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  );
+  const response = await refreshTokenUser.json();
   return response
 }

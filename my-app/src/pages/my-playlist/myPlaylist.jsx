@@ -21,7 +21,6 @@ export function MyPlayList(){
             </S.MainCenterBlock>
             <SideBar/>
           </S.Main>
-
           <S.FooterBlock />
         </S.Container>
       </S.Wrapper>

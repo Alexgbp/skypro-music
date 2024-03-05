@@ -7,7 +7,7 @@ import { Context } from "../../routes";
 
 
 export default function Registration({isLoginMode}) {
-
+  const {setToken} = useContext(Context)
   const {setUser} = useContext(Context)
 
   const navigate = useNavigate();
@@ -44,10 +44,13 @@ export default function Registration({isLoginMode}) {
       return;
     }
     try {
-      setDisabled(true);
       const user = await regUser(email, password, userName);
       localStorage.setItem('user', JSON.stringify(user));
       setUser(user);
+      setDisabled(true);
+      const token = await tokenUser(email, password);
+      localStorage.setItem("token", JSON.stringify(token));
+      setToken(token);
       navigate('/', { replace: true });
     } catch (error) {
       setError(error.message);
@@ -69,7 +72,9 @@ export default function Registration({isLoginMode}) {
     }
     try {
       setDisabled(true);
-      await tokenUser(email, password)
+       const token = await tokenUser(email, password)
+      localStorage.setItem("token", JSON.stringify(token))
+      setToken(token)
       const response = await logUser(email, password);
       localStorage.setItem('user', JSON.stringify(response));
       setUser(response)
